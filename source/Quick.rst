@@ -14,10 +14,10 @@ Before the observer interacts with the pipeline, the following steps are automat
 
 #. The appropriate reduced directory is created using the UT date:
     * ``/scr2/sedmdrp/redux/20151115`` (e.g.)
-#. The required raw calibration files are copied over and reduced
-#. If there is a failure in the reduction, calibrations files from previous runs are copied
+#. The required raw calibration files are copied over and reduced.
+#. If there is a failure in the reduction, calibrations files from previous runs are copied.
 #. All subsequent ifu images are automatically bias-subtracted and cosmic ray cleaned.
-#. Any subsequent standard star ifu observations are reduced and extracted, and a flux calibration is generated
+#. Any subsequent standard star ifu observations are reduced and extracted, and a flux calibration is generated.
 
 
 Step-by-step procedure
@@ -58,12 +58,16 @@ The observer connects with pharos either through VNC (recommended), or via an X 
 
 .. figure:: PTF15drk_SEDM.png
 
-    Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt
+    Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt.
 
 7. Run classifier:
     * ``snid PTF15drk_SEDM.txt`` (e.g.)
     * convert ps output to png:
          * ``ps2png <snid_output>.ps <outfile>.png``
+
+.. figure:: PTF15drk_SEDM_SNIa.png
+
+    SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
 
 8. Record and upload results (type, age, redshift, template plots) to marshal.
 
@@ -77,4 +81,11 @@ Both cameras produce 2048 pixel square images.  The field-of-view of the IFU cam
 Magnitude Limits
 ----------------
 
+Exposure time recommendations for standard stars (single A exposure):
 
+* 10 - 11 mag --> 120s
+* 11 - 12 mag --> 240s
+* 12 - 13 mag --> 360s
+* 13 - 14 mag --> 500s
+
+Exposures longer than this might be considered for an A/B pair.

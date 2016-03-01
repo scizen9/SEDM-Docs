@@ -13,22 +13,24 @@ Pre-observing scripted reductions
 Before the observer interacts with the pipeline, the following steps are automatically performed:
 
 #. The appropriate reduced directory is created using the UT date:
-    * ``/scr2/sedmdrp/redux/20151115``, e.g.
+    * ``/scr2/sedmdrp/redux/20151115`` (e.g.)
 #. The required raw calibration files are copied over and reduced
 #. If there is a failure in the reduction, calibrations files from previous runs are copied
-#. Any standard star observations are processed and extracted, and a flux calibration is generated
+#. All subsequent ifu images are automatically bias-subtracted and cosmic ray cleaned.
+#. Any subsequent standard star ifu observations are reduced and extracted, and a flux calibration is generated
+
 
 Step-by-step procedure
 ----------------------
 
-The observed connects with pharos either through VNC, or via an X enabled ssh connection.  Then the observer-pipeline interaction proceeds with the following steps:
+The observer connects with pharos either through VNC (recommended), or via an X enabled ssh connection (slower).  Then the observer-pipeline interaction proceeds with the following steps:
 
 1. cd into current (UT) date directory:
-    * cd /scr2/sedmdrp/redux/20151115 (e.g.)
+    * ``cd /scr2/sedmdrp/redux/20151115`` (e.g.)
 2. Confirm science targets:
-    * grep science Makefile
+    * ``grep science Makefile``
 3. Initiate final reduction of science targets:
-    * make science
+    * ``make science``
 4. Place aperture on A target:
     * confer with PTF marshal cutouts and finder charts for object
     * find A object (positive: blue)
@@ -51,7 +53,7 @@ The observed connects with pharos either through VNC, or via an X enabled ssh co
     A/B Aperture placement: Aper B goes on negative (red) target.
 
 6. Generate ascii spectrum and confirm extraction:
-    * chspec sp_PTF15drk.npy (e.g.)
+    * ``chspec sp_PTF15drk.npy`` (e.g.)
     * this will generate :download:`PTF15drk_SEDM.txt`
 
 .. figure:: PTF15drk_SEDM.png
@@ -59,16 +61,17 @@ The observed connects with pharos either through VNC, or via an X enabled ssh co
     Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt
 
 7. Run classifier:
-    * snid PTF15drk_SEDM.txt
+    * ``snid PTF15drk_SEDM.txt`` (e.g.)
+    * convert ps output to png:
+         * ``ps2png <snid_output>.ps <outfile>.png``
+
 8. Record and upload results (type, age, redshift, template plots) to marshal.
-
-
-These steps are needed only after the preliminary reductions are automatically performed.
-
 
 
 Data Format & Fields of View
 ----------------------------
+
+Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30 arcsec on a side, while the Rainbow Camera has a field-of-view that is roughly 13 arcmin on a side.
 
 
 Magnitude Limits

@@ -276,6 +276,10 @@ The following steps must be followed:
 
     The above image shows a few "blank spots" at the edge of the field, these are probably OK. The streak of missing spaxels in the upper left is a problem and a bug in the DRP code. As long as the streak doesn't go through the "middle" of the IFU, you should proceed.
 
+    The coordinates of the hexagonal spaxels are illustrated here.
+
+    .. figure:: HexCoords.png
+
     4. Look at some of the flexure measurement PDF files. In some cases (Calibration data or short exposures) the flexure measurement will be garbage; the DPR should recognize these types of exposures and ignore them (bug: it doesn't yet.) Ignore these short exposures, instead take a look at a long science exposure, example::
 
         pharos> acroread flex_bs_crr_b_ifu20150326_03_49_39.npy.pdf

@@ -2,7 +2,7 @@
 Quick Reference for Observers 
 =============================
 
-We are in the process of developing an automated system for data reduction and analysis.  Currently, the only interactive step in the data reduction is placing the aperture(s) on the object(s).  For PTF followup, the data are usually taken in A/B pairs to improve the sky subtraction.  This requires that the observer place an aperture on the A position (positive: blue) and on the B position (negative: red).  See below for a step-by-step procedure.  These steps may eventually be automated, depending on how robust and accurate our astrometry turns out to be.
+We are in the process of developing an automated system for data reduction and analysis.  Currently, the only interactive step in the data reduction is placing the aperture(s) on the object(s).  For PTF followup, the data are usually taken in A/B pairs to improve the sky subtraction.  This requires that the observer place an aperture on the A position (positive: red) and on the B position (negative: blue).  See below for a step-by-step procedure.  These steps may eventually be automated, depending on how robust and accurate our astrometry turns out to be.
 
 Once the apertures have been placed, all that remains is to generate an ascii spectrum of the object and then run your favorite classifier.  SNID is provided, but the format is universal enough to be input to any classifier (Superfit, e.g.). The final step is uploading the spectrum and any classification data (type, age, redshift, template figures) to the PTF marshal.  For this, we suggest you use your own account so you are recorded as the observer.
 
@@ -33,24 +33,24 @@ The observer connects with pharos either through VNC (recommended), or via an X 
     * ``make science``
 4. Place aperture on A target:
     * confer with PTF marshal cutouts and finder charts for object
-    * find A object (positive: blue)
+    * find A object (positive: red)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys
     * left click when sized and placed
 
 .. figure:: PTF15drk_AperA.png
 
-    A/B Aperture placement: Aper A goes on positive (blue) target.
+    A/B Aperture placement: Aper A goes on positive (red) target.
 
 5. Place aperture on B target:
-    * If A/B pair, find B object (negative: red)
+    * If A/B pair, find B object (negative: blue)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys (should be same size as A)
     * left click when sized and placed
 
 .. figure:: PTF15drk_AperB.png
 
-    A/B Aperture placement: Aper B goes on negative (red) target.
+    A/B Aperture placement: Aper B goes on negative (blue) target.
 
 6. Generate ascii spectrum and confirm extraction:
     * ``chspec sp_PTF15drk.npy`` (e.g.)
@@ -78,10 +78,10 @@ Data Format & Fields of View
 Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30 arcsec on a side, while the Rainbow Camera has a field-of-view that is roughly 13 arcmin on a side.
 
 
-Magnitude Limits
-----------------
+Exposure Time Estimates
+-----------------------
 
-Exposure time recommendations for standard stars (single A exposure):
+IFU exposure time recommendations for standard stars (single A exposure):
 
 * 10 - 11 mag --> 120s
 * 11 - 12 mag --> 240s
@@ -89,3 +89,13 @@ Exposure time recommendations for standard stars (single A exposure):
 * 13 - 14 mag --> 500s
 
 Exposures longer than this might be considered for an A/B pair.
+
+IFU exposure time (total) recommendations for science targets (split A/B pair):
+
+* 15 mag --> 420s
+* 16 mag --> 600s
+* 17 mag --> 900s
+* 18 mag --> 1800s
+* 19 mag --> 2700s
+* 20 mag --> 3600s
+* 21 mag --> 5400s

@@ -23,6 +23,9 @@ The SED Machine project began in December 2009 at the Palomar Observatory holida
 Scientific Goals
 ----------------
 
+The goal of the SED-Machine is to be able to classify objects brighter than 20.5 mag with exposure times of close to an hour or less.  A further goal is to perform this classification in under an hour, such that no backlog of processing will arise.  Currently, the turn-around time from shutter close to output spectrum is 20 minutes or less.  Our classification efficiency at 20.5 mag is roughly 50% and rises sharply with brightness.  We are in the process of implementing robotic control of the instrument and have had several successful runs as of March 21, 2016.
 
 Instrument Architecture: Imager + Spectrograph
 ----------------------------------------------
+
+The instrument is designed to allow IFU target acquisition with the larger-field Rainbow Camera (RC).  The reference pixel used for centering is on the most sensitive filter (r-band) and once a target is placed there a standard offset will place it on the IFU.  Once the object is exposing on the IFU, the RC is then used to provide guiding offsets for the telescope.  In addition, the RC can provide ugri photometry through simple offsets once a target is acquired.

@@ -29,18 +29,26 @@ The observer connects with pharos either through VNC (recommended), or via an X 
     * ``cd /scr2/sedmdrp/redux/20151115`` (e.g.)
 2. Confirm science targets:
     * ``grep science Makefile``
+    * A/B pairs will have targets like ``PTF15drk.npy``
+    * if the pair has not finished the target will be like ``PTF15drk_obs1_0.npy``
+    * do not process partial A/B pairs unless one has failed: the sky subtraction will be inferior
 3. Initiate final reduction of science targets:
-    * ``make science``
+    * ``make science``  --> to make all science targets or
+    * ``make PTF15drk.npy`` --> to make a specific target (e.g.)
+    * Note: targets that are already processed will not be re-done, so ``make science`` is a reasonable step after each pair has been read out.
 4. Place aperture on A target:
-    * confer with PTF marshal cutouts and finder charts for object
+    * confer with `PTF marshal`__ cutouts and finder charts for the `target object`__ (e.g.)
     * find A object (positive: red)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys
     * left click when sized and placed
 
+__ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
+__ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
+
 .. figure:: PTF15drk_AperA.png
 
-    A/B Aperture placement: Aper A goes on positive (red) target.
+    Figure 1. A/B Aperture placement: Aper A goes on positive (red) target.
 
 5. Place aperture on B target:
     * If A/B pair, find B object (negative: blue)
@@ -50,7 +58,7 @@ The observer connects with pharos either through VNC (recommended), or via an X 
 
 .. figure:: PTF15drk_AperB.png
 
-    A/B Aperture placement: Aper B goes on negative (blue) target.
+    Figure 2. A/B Aperture placement: Aper B goes on negative (blue) target.
 
 6. Generate ascii spectrum and confirm extraction:
     * ``chspec sp_PTF15drk.npy`` (e.g.)
@@ -69,13 +77,15 @@ The observer connects with pharos either through VNC (recommended), or via an X 
 
     SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
 
-8. Record and upload results (type, age, redshift, template plots) to marshal.
+8. Record and upload results (type, age, redshift, template plots) to `marshal`__.
+
+__ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
 
 
 Data Format & Fields of View
 ----------------------------
 
-Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30 arcsec on a side, while the Rainbow Camera has a field-of-view that is roughly 13 arcmin on a side.
+Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30\" on a side, while the Rainbow Camera (RC) has a field-of-view that is roughly 13\' on a side that is divided into quadrants for each of the four filters (``ugri``), which have individual FOVs of about 6.5\' on a side.
 
 
 Exposure Time Estimates

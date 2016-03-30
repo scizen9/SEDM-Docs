@@ -3,9 +3,6 @@
 Components
 ==========
 
-Inventory
----------
-
 Spec sheets, documentation, photos
 ----------------------------------
 

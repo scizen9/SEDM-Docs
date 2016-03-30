@@ -23,7 +23,15 @@ Before the observer interacts with the pipeline, the following steps are automat
 Step-by-step procedure
 ----------------------
 
-The observer connects with pharos either through VNC (recommended), or via an X enabled ssh connection (slower).  Then the observer-pipeline interaction proceeds with the following steps:
+The observer connects with pharos either through VNC (recommended), or via an X enabled ssh connection (slower).  Below is is a figure showing the layout of the desktop connected through the VNC connection.
+
+.. figure:: PharosSEDMdesktop.png
+
+    Figure 1. Pharos sedmdrp desktop on screen 7 (5907).
+
+The automatic pipeline script is running in the bottom right window.  Some status information can be gleaned from the output there.  The xterm set on the left may be used by the observer to examine the files on pharos.  A web browser will be set up on the desktop screen to the right which can be selected using the chooser on the lower right.  This is where you can interact with the marshal.
+
+In the top-right Xterm window, the observer interacts with the pipeline using the following steps:
 
 1. cd into current (UT) date directory:
     * ``cd /scr2/sedmdrp/redux/20151115`` (e.g.)
@@ -48,7 +56,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_AperA.png
 
-    Figure 1. A/B Aperture placement: Aper A goes on positive (red) target.
+    Figure 2. A/B Aperture placement: Aper A goes on positive (red) target.
 
 5. Place aperture on B target:
     * If A/B pair, find B object (negative: blue)
@@ -58,7 +66,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_AperB.png
 
-    Figure 2. A/B Aperture placement: Aper B goes on negative (blue) target.
+    Figure 3. A/B Aperture placement: Aper B goes on negative (blue) target.
 
 6. Generate ascii spectrum and confirm extraction:
     * ``chspec sp_PTF15drk.npy`` (e.g.)
@@ -66,7 +74,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_SEDM.png
 
-    Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt.
+    Figure 4. Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt.
 
 7. Run classifier:
     * ``snid PTF15drk_SEDM.txt`` (e.g.)
@@ -75,7 +83,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_SEDM_SNIa.png
 
-    SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
+    Figure 5. SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
 
 8. Record and upload results (type, age, redshift, template plots) to `marshal`__.
 

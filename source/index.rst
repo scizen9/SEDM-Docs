@@ -30,6 +30,9 @@ Contents:
     Pipeline
     Components
 
+Reduced data products can be found `here`_.
+
+.. _here: http://www.astro.caltech.edu/sedm/redux/
 
 Indices and tables
 ==================

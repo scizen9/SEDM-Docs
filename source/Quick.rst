@@ -2,9 +2,16 @@
 Quick Reference for Observers 
 =============================
 
-We are in the process of developing an automated system for data reduction and analysis.  Currently, the only interactive step in the data reduction is placing the aperture(s) on the object(s).  For PTF followup, the data are usually taken in A/B pairs to improve the sky subtraction.  This requires that the observer place an aperture on the A position (positive: red) and on the B position (negative: blue).  See below for a step-by-step procedure.  These steps may eventually be automated, depending on how robust and accurate our astrometry turns out to be.
+We are in the process of developing an automated system for data reduction and analysis.  Currently, the only
+interactive step in the data reduction is placing the aperture(s) on the object(s).  For PTF followup, the data are
+usually taken in A/B pairs to improve the sky subtraction.  This requires that the observer place an aperture on the A
+position (positive: red) and on the B position (negative: blue).  See below for a step-by-step procedure.  These steps
+may eventually be automated, depending on how robust and accurate our astrometry turns out to be.
 
-Once the apertures have been placed, all that remains is to generate an ascii spectrum of the object and then run your favorite classifier.  SNID is provided, but the format is universal enough to be input to any classifier (Superfit, e.g.). The final step is uploading the spectrum and any classification data (type, age, redshift, template figures) to the PTF marshal.  For this, we suggest you use your own account so you are recorded as the observer.
+Once the apertures have been placed, all that remains is to generate an ascii spectrum of the object and then run your
+favorite classifier.  SNID is provided, but the format is universal enough to be input to any classifier (Superfit,
+e.g.). The final step is uploading the spectrum and any classification data (type, age, redshift, template figures) to
+the PTF marshal.  For this, we suggest you use your own account so you are recorded as the observer.
 
 
 Pre-observing scripted reductions
@@ -23,13 +30,17 @@ Before the observer interacts with the pipeline, the following steps are automat
 Step-by-step procedure
 ----------------------
 
-The observer connects with pharos either through VNC (recommended), or via an X enabled ssh connection (slower).  Below is is a figure showing the layout of the desktop connected through the VNC connection.
+The observer connects with pharos either through VNC (recommended), or via an X enabled ssh connection (slower).
+Below is is a figure showing the layout of the desktop connected through the VNC connection.
 
 .. figure:: PharosSEDMdesktop.png
 
     Figure 1. Pharos sedmdrp desktop on screen 7 (5907).
 
-The automatic pipeline script is running in the bottom right window.  Some status information can be gleaned from the output there.  The xterm set on the left may be used by the observer to examine the files on pharos.  A web browser will be set up on the desktop screen to the right which can be selected using the chooser on the lower right.  This is where you can interact with the marshal.
+The automatic pipeline script is running in the bottom right window.  Some status information can be gleaned from the
+output there.  The xterm set on the left may be used by the observer to examine the files on pharos.  A web browser
+will be set up on the desktop screen to the right which can be selected using the chooser on the lower right.  This is
+where you can interact with the marshal.
 
 In the top-right Xterm window, the observer interacts with the pipeline using the following steps:
 
@@ -93,7 +104,9 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
 Data Format & Fields of View
 ----------------------------
 
-Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30\" on a side, while the Rainbow Camera (RC) has a field-of-view that is roughly 13\' on a side that is divided into quadrants for each of the four filters (``ugri``), which have individual FOVs of about 6.5\' on a side.
+Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30\" on a side, while
+the Rainbow Camera (RC) has a field-of-view that is roughly 13\' on a side that is divided into quadrants for each of
+the four filters (``ugri``), which have individual FOVs of about 6.5\' on a side.
 
 
 Exposure Time Estimates

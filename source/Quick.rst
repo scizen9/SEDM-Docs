@@ -80,8 +80,9 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
     Figure 3. A/B Aperture placement: Aper B goes on negative (blue) target.
 
 6. Generate ascii spectrum and confirm extraction:
-    * ``chspec sp_PTF15drk.npy`` (e.g.)
-    * this will generate :download:`PTF15drk_SEDM.txt`
+    * THIS STEP IS DONE AUTOMATICALLY NOW
+    * ``chspec sp_PTF15drk.npy`` (not needed, already in Makefile)
+    * this will generate :download:`PTF15drk_SEDM.txt` and the figure below
 
 .. figure:: PTF15drk_SEDM.png
 

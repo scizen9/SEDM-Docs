@@ -60,6 +60,7 @@ In the top-right Xterm window, the observer interacts with the pipeline using th
     * find A object (positive: red)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys
+    * sky subtraction can be toggled on/off with the 'y' key (normally on)
     * left click when sized and placed
 
 __ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
@@ -79,14 +80,14 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
     Figure 3. A/B Aperture placement: Aper B goes on negative (blue) target.
 
-6. Generate ascii spectrum and confirm extraction:
-    * THIS STEP IS DONE AUTOMATICALLY NOW
-    * ``chspec sp_PTF15drk.npy`` (not needed, already in Makefile)
-    * this will generate :download:`PTF15drk_SEDM.txt` and the figure below
+6. Completing step 5 will automatically generate an ascii spectrum and a pdf plot:
+    * The ascii spectrum (e.g, :download:`PTF15drk_SEDM.txt`)
+    * The pdf plot (e.g, :download:`PTF15drk_SEDM.pdf`, see plot below)
+    * display the pdf with ``evince PTF15drk_SEDM.pdf`` (e.g.)
 
 .. figure:: PTF15drk_SEDM.png
 
-    Figure 4. Extracted spectrum plot of PTF15drk. Close this window to generate PTF15drk_SEDM.txt.
+    Figure 4. Extracted spectrum plot of PTF15drk.
 
 7. Run classifier:
     * ``snid PTF15drk_SEDM.txt`` (e.g.)
@@ -100,6 +101,9 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 8. Record and upload results (type, age, redshift, template plots) to `marshal`__.
 
 __ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
+9. Most results are now automatically copied to the UT date subdirectory on the documentation web server in the directory `linked here`_.
+
+.. _linked here: http://www.astro.caltech.edu/sedm/redux/
 
 
 Data Format & Fields of View

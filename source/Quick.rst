@@ -2,16 +2,22 @@
 Quick Reference for Observers 
 =============================
 
-We are in the process of developing an automated system for data reduction and analysis.  Currently, the only
-interactive step in the data reduction is placing the aperture(s) on the object(s).  For PTF followup, the data are
-usually taken in A/B pairs to improve the sky subtraction.  This requires that the observer place an aperture on the A
-position (positive: red) and on the B position (negative: blue).  See below for a step-by-step procedure.  These steps
-may eventually be automated, depending on how robust and accurate our astrometry turns out to be.
+We are in the process of developing an automated system for data reduction
+and analysis.  Currently, the only interactive step in the data reduction
+is placing the aperture(s) on the object(s).  For PTF followup, the data
+are usually taken in A/B pairs to improve the sky subtraction.  This
+requires that the observer place an aperture on the A position (positive:
+red) and on the B position (negative: blue).  See below for a step-by-step
+procedure.  These steps may eventually be automated, depending on how
+robust and accurate our astrometry turns out to be.
 
-Once the apertures have been placed, all that remains is to generate an ascii spectrum of the object and then run your
-favorite classifier.  SNID is provided, but the format is universal enough to be input to any classifier (Superfit,
-e.g.). The final step is uploading the spectrum and any classification data (type, age, redshift, template figures) to
-the PTF marshal.  For this, we suggest you use your own account so you are recorded as the observer.
+Once the apertures have been placed, an ascii spectrum is automatically
+generated and all that remains is to run your favorite classifier on the
+output spectrum.  SNID is provided, but the format is universal enough to
+be input to any classifier (Superfit, e.g.). The final step is uploading
+the spectrum and any classification data (type, age, redshift, template
+figures) to the PTF marshal.  For this, we suggest you use your own account
+so you are recorded as the uploader.
 
 
 Pre-observing scripted reductions
@@ -55,7 +61,15 @@ In the top-right Xterm window, the observer interacts with the pipeline using th
     * ``make science``  --> to make all science targets or
     * ``make PTF15drk.npy`` --> to make a specific target (e.g.)
     * Note: targets that are already processed will not be re-done, so ``make science`` is a reasonable step after each pair has been read out.
-4. Place aperture on A target:
+4. Scale the data cube:
+    * Use '>' and '<' keys to adjust the A/B cube scaling limits until good visibility is obtained.
+    * Hit 'x' to use new scale or 'q' to abandon adjustments and revert to default scaling.
+
+.. figure:: PTF15drk_Scale.png
+
+    Figure 2. Scaling the data cube for good visibility of targets.
+
+5. Place aperture on A target:
     * confer with `PTF marshal`__ cutouts and finder charts for the `target object`__ (e.g.)
     * find A object (positive: red)
     * place red aperture on target
@@ -68,9 +82,9 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_AperA.png
 
-    Figure 2. A/B Aperture placement: Aper A goes on positive (red) target.
+    Figure 3. A/B Aperture placement: Aper A goes on positive (red) target.
 
-5. Place aperture on B target:
+6. Place aperture on B target:
     * If A/B pair, find B object (negative: blue)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys (should be same size as A)
@@ -78,30 +92,44 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. figure:: PTF15drk_AperB.png
 
-    Figure 3. A/B Aperture placement: Aper B goes on negative (blue) target.
+    Figure 4. A/B Aperture placement: Aper B goes on negative (blue) target.
 
-6. Completing step 5 will automatically generate an ascii spectrum and a pdf plot:
+7. When prompted, enter quality of observation as follows:
+    * 1 - good
+    * 2 - acceptable
+    * 3 - poor
+    * 4 - no object visible
+
+8. Completing step 7 will automatically generate an ascii spectrum and a pdf plot:
     * The ascii spectrum (e.g, :download:`PTF15drk_SEDM.txt`)
     * The pdf plot (e.g, :download:`PTF15drk_SEDM.pdf`, see plot below)
     * display the pdf with ``evince PTF15drk_SEDM.pdf`` (e.g.)
 
 .. figure:: PTF15drk_SEDM.png
 
-    Figure 4. Extracted spectrum plot of PTF15drk.
+    Figure 5. Extracted spectrum plot of PTF15drk.
 
-7. Run classifier:
+9. Run classifier:
     * ``snid PTF15drk_SEDM.txt`` (e.g.)
-    * convert ps output to png:
-         * ``ps2png <snid_output>.ps <outfile>.png``
+    * If there is a good fit, hit the ``PS`` button to output a template
+      plot.
+10. Convert template plot ps file output to png:
+        * ``ps2png <snid_output>.ps <outfile>.png``
+        * ``ps2png PTF15drk_SEDM_comp0001_snidflux.ps PTF15drk_SEDM_SNIa.png`` (e.g.)
+        * Format the name as in the above example using the PTF ID, the
+          string ``SEDM`` and the type.
 
 .. figure:: PTF15drk_SEDM_SNIa.png
 
-    Figure 5. SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
+    Figure 6. PNG figure ``PTF15drk_SEDM_SNIa.png`` showing SNID template fit for spectrum in ``PTF15drk_SEDM.txt``.
 
-8. Record and upload results (type, age, redshift, template plots) to `marshal`__.
+11. Record and upload results (type, age, redshift, template plots) to `marshal`__.
 
 __ http://ptf.caltech.edu/cgi-bin/ptf/transient/marshal.cgi
-9. Most results are now automatically copied to the UT date subdirectory on the documentation web server in the directory `linked here`_.
+
+12. Most results and diagnostic plots are now automatically copied to the
+    UT date subdirectory on the documentation web server in the directory
+    `linked here`_.  Consult this page to check aperture placement, etc.
 
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/
 

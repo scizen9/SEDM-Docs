@@ -122,7 +122,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 10. You can then re-place the aperture and remake the extracted spectrum by typing
      * ``make science`` or
      * ``make sp_PTF15drk.npy`` (e.g.)
-     * Using the science target is recommended.
+     * Using the ``make science`` command is recommended, since it will re-generate the report (see step 11).
 11. If you typed ``make science`` to initiate the data reduction,
     then an ascii report on the reductions is generated in the file
     ``report.txt``.
@@ -132,10 +132,10 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/
 
-13. When the night is complete, we now use an automatic script to upload the
-    resulting spectra to the marshal.  To generate an e-mail report on the entire
-    night of data reductions and initiate the automatic upload of the resulting
-    spectra to the marshal, please enter:
+13. When the night is complete, we now use an automatic script to upload any
+    resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail
+    report on the entire night of data reductions and initiate the automatic
+    upload of the resulting good spectra to the marshal, please enter:
      * ``make finalreport``
 
 

@@ -60,12 +60,12 @@ In the top-right Xterm window, the observer interacts with the pipeline using th
     * ``cd /scr2/sedmdrp/redux/20151115`` (e.g.)
 2. Confirm science targets:
     * ``grep science Makefile``
-    * A/B pairs will have target names like ``PTF15drk.npy``
-    * if the pair has not finished the target name will be something like ``PTF15drk_obs1_0.npy``
+    * A/B pairs will have target names like ``sp_PTF15drk.npy``
+    * if the pair has not finished the target name will be something like ``sp_PTF15drk_obs1_0.npy``
     * do not process partial A/B pairs unless one has failed: the sky subtraction will be inferior
 3. Initiate final reduction of science targets:
     * ``make science``  --> to make all science targets or
-    * ``make PTF15drk.npy`` --> to make a specific target (e.g.)
+    * ``make sp_PTF15drk.npy`` --> to make a specific target (e.g.)
     * Note: targets that are already processed will not be re-done, so ``make science`` is a reasonable step after each pair has been read out.
 4. Scale the data cube:
     * Use '>' and '<' keys to adjust the A/B cube scaling limits until good visibility is obtained.
@@ -100,21 +100,21 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
     Figure 4. A/B Aperture placement: Aper B goes on negative (blue) target.
 
-7. When prompted, enter quality of observation as follows:
+7. The spectrum will be extracted and then displayed. When prompted, enter quality of observation based on the image and the extracted spectrum as follows:
     * 1 - good         (no problems)
-    * 2 - acceptable   (minor problems)
-    * 3 - poor         (major problems)
+    * 2 - acceptable   (minor problems, near neighbor, e.g.)
+    * 3 - poor         (major problems, A or B image missing, e.g.)
     * 4 - no object visible
-    * (Only quality 1 and 2 will be uploaded to the marshal)
-
-8. Completing step 7 will automatically generate an ascii spectrum and a pdf plot:
-    * The ascii spectrum (e.g, :download:`PTF15drk_SEDM.txt`)
-    * The pdf plot (e.g, :download:`PTF15drk_SEDM.pdf`, see plot below)
-    * display the pdf with ``evince PTF15drk_SEDM.pdf`` (e.g.)
+    * NOTE: Only quality 1 and 2 will be uploaded to the marshal
 
 .. figure:: PTF15drk_SEDM.png
 
-    Figure 5. Extracted spectrum plot of PTF15drk.
+    Figure 5. Extracted spectrum plot of PTF15drk, awaiting a quality.
+
+8. Completing step 7 will automatically generate an ascii spectrum and a pdf plot:
+    * The ascii spectrum (e.g, :download:`PTF15drk_SEDM.txt`)
+    * The pdf plot (e.g, :download:`PTF15drk_SEDM.pdf`, see plot above)
+    * display the pdf with ``evince PTF15drk_SEDM.pdf`` (e.g.)
 
 9. Redo an object.  If you wish to redo an object because of improper aperture placement, or for any other reason simply type:
     * ``make redo_PTF15drk`` (e.g., for A/B pair)
@@ -132,10 +132,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/
 
-13. When the night is complete, we now use an automatic script to upload any
-    resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail
-    report on the entire night of data reductions and initiate the automatic
-    upload of the resulting good spectra to the marshal, please enter:
+13. When the night is complete, we now use an automatic script to upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
      * ``make finalreport``
 
 

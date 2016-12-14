@@ -12,12 +12,11 @@ procedure.  These steps may eventually be automated, depending on how
 robust and accurate our astrometry turns out to be.
 
 Once the apertures have been placed, an ascii spectrum is automatically
-generated and all that remains is to run your favorite classifier on the
-output spectrum.  SNID is provided, but the format is universal enough to
-be input to any classifier (Superfit, e.g.). The final step is uploading
-the spectrum and any classification data (type, age, redshift, template
-figures) to the PTF marshal.  For this, we suggest you use your own account
-so you are recorded as the uploader.
+generated.  The format of the ascii spectrum is universal enough to be 
+input to any classifier (Superfit, e.g.), however, SNID is automatically 
+run on PTF targets at the end of the reduction run when a final report 
+is generated.  For PTF targets, the final report generation also uploads
+the PTF spectra to the marshal.
 
 
 Pre-observing scripted reductions
@@ -31,6 +30,7 @@ Before the observer interacts with the pipeline, the following steps are automat
 #. If there is a failure in the reduction, calibrations files from previous runs are copied.
 #. All subsequent ifu images are automatically bias-subtracted, cosmic ray cleaned, and background subtracted.
 #. Any subsequent standard star ifu observations are reduced and extracted, and a flux calibration is generated.
+#. At the end of the night, all observations that can be automatically extracted are extracted (same as 'make auto').
 
 
 Step-by-step procedure
@@ -54,6 +54,11 @@ of traditional convolution, followed by an iteration of fast-Fourier convolution
 A/B pairs, it will do this twice.  Check the lower-right window to see if the background
 subtraction is in process.
 
+We now record the name of the reducer (see step 7 below).  This can be made easier if you
+set the environment variable SEDM_USER to your name.  It will then come up as the
+default
+name when asked.
+
 In the top-right Xterm window, the observer interacts with the pipeline using the following steps:
 
 1. cd into current (UT) date directory:
@@ -63,6 +68,7 @@ In the top-right Xterm window, the observer interacts with the pipeline using th
     * A/B pairs will have target names like ``sp_PTF15drk.npy``
     * if the pair has not finished the target name will be something like ``sp_PTF15drk_obs1_0.npy``
     * do not process partial A/B pairs unless one has failed: the sky subtraction will be inferior
+    * NOTE: if a target is bright, then only a single observation is made as the sky subtraction will not be as difficult.
 3. Initiate final reduction of science targets:
     * ``make science``  --> to make all science targets or
     * ``make sp_PTF15drk.npy`` --> to make a specific target (e.g.)
@@ -106,6 +112,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
     * 3 - poor         (major problems, A or B image missing, e.g.)
     * 4 - no object visible
     * NOTE: Only quality 1 and 2 will be uploaded to the marshal
+    * After quality is entered, enter your name as the reducer.
 
 .. figure:: PTF15drk_SEDM.png
 
@@ -119,20 +126,17 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 9. Redo an object.  If you wish to redo an object because of improper aperture placement, or for any other reason simply type:
     * ``make redo_PTF15drk`` (e.g., for A/B pair)
     * ``make redo_PTF15drk_obs1_0`` (e.g., for a single-frame observation)
-10. You can then re-place the aperture and remake the extracted spectrum by typing
-     * ``make science`` or
-     * ``make sp_PTF15drk.npy`` (e.g.)
-     * Using the ``make science`` command is recommended, since it will re-generate the report (see step 11).
-11. If you typed ``make science`` to initiate the data reduction,
+    * You can then re-place the aperture
+10. If you typed ``make science`` to initiate the data reduction,
     then an ascii report on the reductions is generated in the file
-    ``report.txt``.
-12. Most results and diagnostic plots are now automatically copied to the
+    ``report.txt``. You can also re-generate it by typing ``make report``.
+11. Most results and diagnostic plots are now automatically copied to the
     UT date subdirectory on the documentation web server in the directory
     `linked here`_.  Consult this page to check aperture placement, etc.
 
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/
 
-13. When the night is complete, we now use an automatic script to upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
+12. When the night is complete, we now use an automatic script to upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
      * ``make finalreport``
 
 

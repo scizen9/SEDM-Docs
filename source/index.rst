@@ -35,7 +35,7 @@ will want to refer to the Quick Reference below.
 
 Data products produced by the semi-automatic pipeline can be found `here`_.
 
-.. _here: http://www.astro.caltech.edu/sedm/redux/
+.. _here: http://www.astro.caltech.edu/sedm/redux/?C=N;O=D
 
 
 
@@ -51,12 +51,5 @@ Contents:
     Hardware
     Components
     Old_Pipeline
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 Last updated on |version|

@@ -9,11 +9,19 @@ Python Requirements
 ^^^^^^^^^^^^^^^^^^^
 
 The IFU pipeline is written in python v2.7 and currently runs under the
-miniconda2 distribution (https://conda.io/miniconda.html) with astroconda
-installed (https://astroconda.readthedocs.io/en/latest/) using the
-environment name 'astroconda'.  The most up-to-date version of the IFU
-pipeline (as well as the RCam pipeline and database routines) can be found
-at github (https:github.com/scizen9/kpy.git).
+miniconda2 distribution (https://conda.io/miniconda.html).  It requires the
+astroconda environment from STScI
+(https://astroconda.readthedocs.io/en/latest/) and expects the name to be
+'astroconda':
+
+``conda create -n astroconda stsci``
+
+There is no IRAF dependancy in the IFU pipeline, but the RCam pipeline
+still requires pyraf and the Ureka distribution.
+
+The most up-to-date version of the IFU pipeline (as well as the RCam
+pipeline and database routines) can be found at github
+(https:github.com/scizen9/kpy.git).
 
 Pipeline Operations
 ^^^^^^^^^^^^^^^^^^^
@@ -23,9 +31,10 @@ and analysis.  Currently, the only interactive step in the data reduction
 is placing the aperture(s) on the object(s).  For transient followup, the
 data are usually taken in A/B pairs to improve the sky subtraction.  This
 requires that the observer place an aperture on the A position (positive:
-red) and on the B position (negative: blue).  See below for a step-by-step
-procedure.  These steps may eventually be automated, depending on how
-robust and accurate our astrometry turns out to be.
+red) and on the B position (negative: blue).  See :ref:`below <Interactive
+Procedure>` for the interactive procedure.  These steps may eventually be
+automated, depending on how robust and accurate our astrometry turns out to
+be.
 
 Once the apertures have been placed, an ascii spectrum is automatically
 generated.  The format of the ascii spectrum is universal enough to be 
@@ -48,7 +57,7 @@ automatically performed:
 #. If there is a failure in the reduction, calibrations files from previous runs are copied.
 #. All subsequent IFU images are automatically bias-subtracted, cosmic ray cleaned, and background subtracted.
 #. Any subsequent standard star IFU observations are reduced and extracted, and a flux calibration is generated.
-#. At the end of the night, all observations that can be automatically extracted are extracted (same as 'make auto').
+#. At the end of the night, all observations that can be automatically extracted are extracted (same as ``make auto``).
 
 
 Interactive Procedure
@@ -159,7 +168,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/
 
-12. When the night is complete, we now use an automatic script to perform a default classification (using snid) and upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
+12. When the night is complete, we now use an automatic script to perform a default classification (using SNID) and upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
      * ``make finalreport``
 
 Last updated on |version|

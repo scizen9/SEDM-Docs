@@ -16,13 +16,13 @@ traditional slit-spectrograph inevitably requires many minutes for object
 acquisition, leading to a less than perfect "on source" efficiency. Here,
 we present the design for a very low resolution (:math:`R\sim 100`)
 Integral Field Unit (IFU) spectrograph (hereafter SED Machine or Spectral
-Energy Distribution Machine; :ref:`Figure 1 <fig-model>` which is sufficient
-for the classification of transient candidates, and when mounted on a 1-m
-to 3-m class telescope, will perform this task more efficiently than
-current instruments on larger aperture telescopes. The greater availability
-of observing time on small aperture telescopes further means that more
-candidates can be classified, and the classification can occur closer to
-the discovery epoch.
+Energy Distribution Machine, see :ref:`the figure <fig-model>` below) which
+is sufficient for the classification of transient candidates, and when
+mounted on a 1-m to 3-m class telescope, will perform this task more
+efficiently than current instruments on larger aperture telescopes. The
+greater availability of observing time on small aperture telescopes further
+means that more candidates can be classified, and the classification can
+occur closer to the discovery epoch.
 
 
 .. _fig-model:

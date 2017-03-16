@@ -6,22 +6,36 @@
 Welcome to SED Machine's documentation!
 =======================================
 
-The SED Machine is very low resolution (:math:`\frac{\lambda}{\Delta \lambda}\sim100`) optical (365 - 1,000 nm)
-integral field (30"x"30") spectrograph and a rainbow imager with a 13' x 13' field. The rainbow camera images are
-partitioned into u, g, r, and i bands, each with a 6' x 6' field of view. The instrument was designed for rapid
-classification of supernovae from PTF. To achieve this goal, the instrument was designed to have:
+The SED Machine is very low resolution (:math:`\frac{\lambda}{\Delta
+\lambda}\sim100`) optical (365 - 1,000 nm) integral field (30"x"30")
+spectrograph and a rainbow imager with a 13' x 13' field. The rainbow
+camera images are partitioned into u, g, r, and i bands, each with a 6' x
+6' field of view. The instrument was designed for rapid classification of
+supernovae from transient surveys. To achieve this goal, the instrument was
+designed to have:
 
 - Low resolution (:math:`R=\frac{\lambda}{\Delta \lambda}\sim100`), sufficient for classification.
 - High "Slit to detector" photon throughput.
 - 0.1 mag precision spectrophotometry.
 
-The hardware project was funded by the NSF with a grant to Caltech and executed by Nick Konidaris (Principle
-Investigator), Robert Quimby (Project Scientist), Jack Davis, and Sagi Ben-Ami (Weizzman institute grad student).
-Continued work has been performed by Nadejda Blagorodnova (RCam photometry pipeline), Richard Walters (instrument
-control), and Don Neill (IFU spectroscopy pipeline).
+The hardware project was funded by the NSF with a grant to Caltech.  Many
+people were and are involved.  A partial list is here:
 
-Here we document the instrument for observers and developers.  Observers will want to refer to the Quick Reference
-below.
+- Nick Konidaris (Principle Investigator)
+- Robert Quimby (Project Scientist)
+- Jack Davis, and Sagi Ben-Ami (Weizmann institute grad students)
+- Don Neill (Commissioning Scientist, IFU pipeline)
+- Nadejda Blagorodnova (Science results, RCam photometry pipeline)
+- Richard Walters (Telescope/Instrument Operations and Scheduling)
+- Karl Vyhmeister (SEDM Database)
+- Chris Cannella (Marshal interface, ATels)
+
+Here we document the instrument for observers and developers.  Observers
+will want to refer to the Quick Reference below.
+
+Data products produced by the semi-automatic pipeline can be found `here`_.
+
+.. _here: http://www.astro.caltech.edu/sedm/redux/
 
 
 
@@ -33,13 +47,10 @@ Contents:
 
     Introduction
     Quick
-    Hardware
     Pipeline
+    Hardware
     Components
-
-Reduced data products can be found `here`_.
-
-.. _here: http://www.astro.caltech.edu/sedm/redux/
+    Old_Pipeline
 
 Indices and tables
 ==================
@@ -48,3 +59,4 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+Last updated on |version|

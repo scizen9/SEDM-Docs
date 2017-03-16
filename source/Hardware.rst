@@ -5,13 +5,18 @@ Hardware
 Mechanics
 ---------
 
+IFU Focus Stage
+^^^^^^^^^^^^^^^
+
 
 Optics
 ------
 
-Fore
-^^^^
+Expander
+^^^^^^^^
 
+Lenslet
+^^^^^^^
 
 Collimator
 ^^^^^^^^^^
@@ -28,13 +33,19 @@ Focus
 Strategy
 ^^^^^^^^
 
-Foreoptics
-^^^^^^^^^^
-
-Camera
-^^^^^^
-
 Electronics
 -----------
 
+Focus Stage Controller
+^^^^^^^^^^^^^^^^^^^^^^
 
+Princeton Pixis CCDs
+^^^^^^^^^^^^^^^^^^^^
+
+IFU Shutter
+^^^^^^^^^^^
+
+RCam Shutter
+^^^^^^^^^^^^
+
+Last updated on |version|

@@ -131,4 +131,4 @@ We use a **copper** water recirculating system. **Note: Use a copper only system
 
 :download:`SPECSHEETS/manual_erm-3k3u_d100eng.pdf`
 
-
+Last updated on |version|

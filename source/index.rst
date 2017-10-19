@@ -48,6 +48,7 @@ Contents:
     Introduction
     Quick
     Pipeline
+    Efficiency
     Hardware
     Components
     Old_Pipeline

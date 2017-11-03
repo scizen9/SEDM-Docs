@@ -8,6 +8,12 @@ standard star flux with the observed standard star flux.  Although that
 sounds easy, in practice there are many pitfalls to this calculation.  This
 page documents the process by which we derive the efficiency.
 
+At this time it is important to acknowledge the efforts of Jason Fucik,
+Rich Dekany, and David Hover in producing the models of the SEDM optical
+system and in performing lab measurements and analysis.  In particular,
+Jason made the crucial discovery of the low throughput 'smoking gun' and is
+leading the acquisition of an improved micro-lens array.
+
 
 Standard Flux
 -------------
@@ -240,6 +246,73 @@ is puzzling that our initial (and incorrect) calculation agrees so well
 with the lab throughput measurements shown by the red and blue curves.  It
 is possible that there is still some accounting for wavelength bins in the
 lab measurements that needs to be done.
+
+
+The Effect of Filling Factor on Efficiency
+------------------------------------------
+
+In our efforts to understand the low throughput of the current SEDM, we
+have tried to estimate the filling factor of the multi-lens array (MLA).
+In the manufacturing process for any MLA, a certain fraction of the array
+becomes unusable because of dead zones at the borders of the lenslets.  In
+our analysis, we have found that it is crucial to keep these dead zones as
+small as possible because, not only do they represent a loss of light, but
+they are also a source of scattered light.  The specification for the
+orignal MLA was to have a filling factor of around 95%.  Our investigations
+have revealed that, due to a :ref:`misalignment of the front and back
+lenses <fig-mla_offset>` in the MLA, the effective filling factor is
+actually closer to 80%.
+
+
+.. _fig-mla_offset:
+
+.. figure:: SEDM_MLA_offset.png
+    
+    Microscopic view of the SEDM MLA with the red color being the front
+    surface and the blue color being the back surface.  The dead zones are
+    apparent as the dark areas and are exacerbated by the obvious
+    mis-alignment of the front and back lenslets.
+
+
+The impact of this low filling factor is rather extreme and may completely
+explain the low instrumental throughput.  The filling factor enters the
+throughput calculation as a factor to the power of the number of spaxels
+involved, :math:`T_{inst} = T_{spax} \times f_{fill}^{N_{spax}}`.  Using the
+peak throughput predicted for a single spaxel (the grey curve in :ref:`the
+lab measures figure <fig-lab_eff>`) of 45%, a filling factor of 80%, and
+assuming we cover seven spaxels, we get :math:`T_{inst} = 0.45 \times
+0.80^{7} = 0.09`, which is very close to the measured throughput peak in
+the figure above of our :ref:`best efficiency calculation
+<fig-efficiency>`.  The remaining difference is likely due to the fact that
+our standard stars usually cover more than seven spaxels and thus the
+impact of the filling factor would be greater.
+
+The impact of filling factor is also illustrated by the :ref:`figure below
+<fig-filling_factor>`.
+
+
+.. _fig-filling_factor:
+
+.. figure:: SEDM_filling_factor.png
+
+    The impact of various filling factors on the efficiency curve.  The
+    black curve is the predicted throughput based on the ZMAX model, while
+    the other colors represent different filling factors as indicated in the
+    figure legend.
+
+
+Good News
+^^^^^^^^^
+
+Ultimately, this is good news for the prospect of improving the SEDM
+throughput.  In particular, we can avoid the whole issue of alignment by
+making the MLA plano-convex instead of double convex.  This should result
+in a filling factor much closer to 100% and thus our throughput should jump
+by nearly a factor of seven.  We have indeed redesigned the MLA to be
+plano-convex and are working with a vendor with the goal of producing a MLA
+with a filling factor of 98% (light blue curve in :ref:`the figure above
+<fig-filling_factor>`) as a replacement MLA for SEDM (and for any future
+versions of the SEDM).
 
 
 Efficiency Trend

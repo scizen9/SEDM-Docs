@@ -40,14 +40,19 @@ standard flux is now in :math:`e^-\ s^{-1} cm^{-2} A^{-1}` and it is very
 unlikely that the native wavelength bins of our observations are all 1
 Angstrom wide, we must carefully account for the native size of the
 wavelength sampling.  To do this, we must use the wavelength scale that is
-most representative of the cube's geometry solution.  For the SEDM, this is
-currently derived from the central five arcseconds of the IFU field of
-view.  This avoids any edge effects and should represent the region where
-most of the standard stars are observed.
+most representative of the cube's geometry solution.
+
+It is also important that we collect as much of the standard star's light
+from the raw image as possible.  This means using a large number of
+spaxels, which makes our calculation more susceptible to background
+problems.  Because of this, we derive our fiducial wavelength scale from
+the central five arcseconds of the IFU field of view.  This avoids any edge
+effects and should represent the region where most of the standard stars
+are observed.
 
 In addition, all observations of standard stars are corrected for
-atmospheric extinction using the standard curves for Palomar (Hayes &
-Latham 1975).
+atmospheric extinction using the standard extinction curves for Palomar
+(Hayes & Latham 1975).
 
 
 Wavelength Scale
@@ -127,8 +132,13 @@ instrumental throughput.
 
 Below is the figure that shows a typical efficiency curve using our best
 understanding of the calculation and of the instrumental wavelength bins.
-The efficiency is only as good as the quality of the night and represents a
-lower limit on the true efficiency.
+The efficiency is only as good as the quality of the night and represents an
+approximation of the true efficiency.  Clouds will tend to lower the
+measured efficiency, but moonlight or other sources of anomolous background
+will tend to raise the measured efficiency.  In general, clouds are a more
+common source of efficiency offset and so most measurements are lower
+limits on the true efficiency.
+
 
 
 .. _fig-efficiency:
@@ -173,10 +183,11 @@ the efficiency and since our wavelength bins were not 1 nm, but instead
 ranged from approximately 1.5 to 4.5 nm (:ref:`green curve in figure two
 <fig-delta_waves>`), the overall efficiency dropped considerably.  The
 shape seems to be closer to what is :ref:`expected based on ray-tracing
-<fig-lab_eff>`.  However, we were still using the functional form for our
+<fig-lab_eff>`.  However, here we are still using the functional form for our
 fiducial wavelengths.  The plot below shows how the overall efficiency
-dropped slightly, but because of the varying bin size, the shape changed
-again, but in a more subtle way.
+dropped significantly, but because the wavelength bins now vary in size
+much closer to the native bin sizes, the shape changed to a more expected
+form.
 
 
 .. _fig-eff_oldfid:
@@ -192,7 +203,7 @@ wavelength bins range from 1.5 to 5.7 nm (:ref:`blue curve in figure two
 <fig-delta_waves>`) and have a trend that differs from that generated using
 the functional form.  Compare the figure above with the :ref:`first
 efficiency curve <fig-efficiency>` and you will see that at 500 nm, the
-efficiency increases by 0.5%, but the overall efficiency goes down.  If you
+efficiency increases by 0.5%, but the peak efficiency goes down.  If you
 compare the green and blue curves in :ref:`figure two above
 <fig-delta_waves>`, you can see that the largest differences occur around
 pixel zero and pixel 200.  Referring to :ref:`figure one above
@@ -234,13 +245,14 @@ lab measurements that needs to be done.
 Efficiency Trend
 ----------------
 
-As stated above, the quality of the night can only reduce the efficiency
-measurement due to atmospheric extinction (clouds).  The best way to
-mitigate this is to look at the trend over time.  Below is a figure that
-shows the efficiency in wavlength bins over the course of the last 700
-days.  This was calculated using the functional form for the wavelengths
-and will need to be re-calculated with the average fiducial wavelength
-scale.
+As stated above, the quality of the night most typically reduces the
+efficiency measurement due to atmospheric extinction (clouds), but can also
+increase the efficiency if there is a high background (moon).  The best way
+to mitigate these effects is to look at the trend over time.  Below is a
+figure that shows the efficiency in wavlength bins over the course of the
+last 700 days.  This was calculated using the functional form for the
+wavelengths and will need to be re-calculated with the average fiducial
+wavelength scale.
 
 .. _fig-eff_trend:
 

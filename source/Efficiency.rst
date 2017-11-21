@@ -323,9 +323,8 @@ efficiency measurement due to atmospheric extinction (clouds), but can also
 increase the efficiency if there is a high background (moon).  The best way
 to mitigate these effects is to look at the trend over time.  Below is a
 figure that shows the efficiency in wavlength bins over the course of the
-last 700 days.  This was calculated using the functional form for the
-wavelengths and will need to be re-calculated with the average fiducial
-wavelength scale.
+last 700 days.  This was calculated after re-processing all the archival
+data with the average fiducial wavelength scale.
 
 .. _fig-eff_trend:
 
@@ -336,8 +335,8 @@ wavelength scale.
 
 Several features of this plot stand out.  There are short periods of higher
 efficiency that go against the general trend.  These are most likely from
-observations of standard stars that have a high background perhaps due to
-moonlight.  This would be a good thing to track down.
+observations of standard stars that have a high background due to
+moonlight.
 
 The other feature is the increase in efficiency to a peak near JD 2457640
 and then a general decline.  It's hard to understand the rise in this

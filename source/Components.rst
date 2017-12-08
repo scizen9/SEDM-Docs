@@ -108,9 +108,17 @@ Lenslet array
 Shutter data
 ^^^^^^^^^^^^
 
-* CS25 spec sheet:
+* IFU Shutter - CS25 spec sheet:
 
 :download:`SPECSHEETS/cs25_9_23_08.pdf`
+
+* RC Shutter - CS45 spec sheet:
+
+:download:`SPECSHEETS/cs45-datasheet.pdf`
+
+* Shutter contollers (2) - D880C
+
+:download:`SPECSHEETS/d880cdatasheet.pdf`
 
 Mechanical Data
 ^^^^^^^^^^^^^^^

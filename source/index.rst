@@ -31,7 +31,7 @@ people were and are involved.  A partial list is here:
 - Chris Cannella (Marshal interface, ATels)
 
 Here we document the instrument for observers and developers.  Observers
-will want to refer to the Quick Reference below.
+will want to refer to the Observer's Reference below.
 
 Data products produced by the semi-automatic pipeline can be found `here`_.
 
@@ -46,7 +46,7 @@ Contents:
     :maxdepth: 2
 
     Introduction
-    Quick
+    ObsRef
     Pipeline
     Efficiency
     Hardware

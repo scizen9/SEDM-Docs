@@ -1,6 +1,6 @@
 
-Quick Reference for Observers 
-=============================
+Observer's Reference
+====================
 
 Data Reduction
 --------------

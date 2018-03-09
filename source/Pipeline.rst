@@ -40,10 +40,11 @@ Once the apertures have been placed, an ascii spectrum is automatically
 generated.  The format of the ascii spectrum is universal enough to be 
 input to any classifier (Superfit, e.g.), however, SNID is automatically 
 run on iPTF targets at the end of the reduction run when a final report 
-is generated.  For iPTF targets, the final report generation also uploads
-the iPTF spectra to the marshal.  **This will change once the ZTF marshal
-comes online.**
+is generated.  For ZTF targets, the final report generation will upload
+the ascii spectra to the marshal.  **This phase currently in development.**
 
+**Note: the examples on this page are from the preceeding suvey, PTF.  It
+will be updated with ZTF targets once we are in full survey mode.**
 
 Automated Pipeline Operations
 -----------------------------
@@ -56,7 +57,7 @@ automatically performed:
 #. The required raw calibration files are copied over and reduced.
 #. If there is a failure in the reduction, calibrations files from previous runs are copied.
 #. All subsequent IFU images are automatically bias-subtracted, cosmic ray cleaned, and background subtracted.
-#. Any subsequent standard star IFU observations are reduced and extracted, and a flux calibration is generated.
+#. Any subsequent standard star IFU observations are reduced and extracted, and a new flux calibration is generated.
 #. At the end of the night, all observations that can be automatically extracted are extracted (same as ``make auto``).
 
 
@@ -85,7 +86,7 @@ followed by an iteration of fast-Fourier convolution.  For the A/B pairs,
 it will do this twice.  Check the lower-right window to see if the
 background subtraction is in process.
 
-We now record the name of the reducer (see step 7 below).  This can be made
+We record the name of the reducer in the spectrum file(see step 7 below).  This can be made
 easier if you set the environment variable SEDM_USER to your name in the
 top-right xterm window.  It will then come up as the default name when
 asked.
@@ -98,7 +99,7 @@ using the following steps:
 2. Confirm science targets:
     * ``grep science Makefile``
     * A/B pairs will have target names like ``sp_PTF15drk.npy``
-    * if the pair has not finished the target name will be something like ``sp_PTF15drk_obs1_0.npy``
+    * if the pair has not finished the target name will be something like ``sp_PTF15drk_obs1.npy``
     * do not process partial A/B pairs unless one has failed: the sky subtraction will be inferior
     * NOTE: if a target is bright, then only a single observation is made as the sky subtraction will not be as difficult.
 3. Initiate final reduction of science targets:
@@ -114,10 +115,12 @@ using the following steps:
     Figure 2. Scaling the data cube for good visibility of targets.
 
 5. Place aperture on A target:
-    * confer with `PTF marshal`__ cutouts and finder charts for the `target object`__ (e.g.)
+    * confer with appropriate ZTF marshal cutout images and finder charts (`PTF marshal`__  in this example) for the `target object`__ (e.g.)
     * find A object (positive: red)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys
+    * adjust shape with '[' or ']' keys
+    * adjust orientation with ',' or '.' keys
     * sky subtraction can be toggled on/off with the 'y' key (normally on)
     * left click when sized and placed
 
@@ -131,7 +134,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 6. Place aperture on B target:
     * If A/B pair, find B object (negative: blue)
     * place red aperture on target
-    * adjust size with 'z' or 'x' keys (should be same size as A)
+    * adjust size, shape and orientation of aperture with keys (should be same as A)
     * left click when sized and placed
 
 .. figure:: PTF15drk_AperB.png
@@ -157,18 +160,21 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 
 9. Redo an object.  If you wish to redo an object because of improper aperture placement, or for any other reason simply type:
     * ``make redo_PTF15drk`` (e.g., for A/B pair)
-    * ``make redo_PTF15drk_obs1_0`` (e.g., for a single-frame observation)
+    * ``make redo_PTF15drk_obs1`` (e.g., for a single-frame observation)
     * You can then re-place the aperture
 10. If you typed ``make science`` to initiate the data reduction,
     then an ascii report on the reductions is generated in the file
     ``report.txt``. You can also re-generate it by typing ``make report``.
 11. Most results and diagnostic plots are now automatically copied to the
     UT date subdirectory on the documentation web server in the directory
-    `linked here`_.  Consult this page to check aperture placement, etc.
+    `linked here`_.  Consult this page to check aperture placement, etc. A
+    new page for results can be `found here`_, however, you will need an
+    account to access this page.
 
-.. _linked here: http://www.astro.caltech.edu/sedm/redux/
+.. _linked here: http://www.astro.caltech.edu/sedm/redux/?C=N;O=D
+.. _found here: http://pharos.caltech.edu/data_access?
 
-12. When the night is complete, we now use an automatic script to perform a default classification (using SNID) and upload any resulting spectra with quality 1 or 2 to the marshal.  To generate an e-mail report on the entire night of data reductions and initiate the automatic upload of the resulting good spectra to the marshal, please enter:
+12. When the night is complete, we use an automatic script to perform a default classification (using SNID).   This script will eventually upload the results to the appropriate ZTF marshal, once we have implemented this feature.  To initiate this script, please enter:
      * ``make finalreport``
 
 Last updated on |version|

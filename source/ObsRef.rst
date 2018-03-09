@@ -12,9 +12,9 @@ pipeline.
 Data Format & Fields of View
 ----------------------------
 
-Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is roughly 30\" on a side, while
-the Rainbow Camera (RC) has a field-of-view that is roughly 13\' on a side that is divided into quadrants for each of
-the four filters (``ugri``), which have individual FOVs of about 6.5\' on a side.
+Both cameras produce 2048 pixel square images.  The field-of-view of the IFU camera is 24\" on a side, while
+the Rainbow Camera (RC) has a field-of-view that is 13\' on a side that is divided into quadrants for each of
+the four filters (``ugri``), which have individual FOVs of 6.5\' on a side.
 
 
 Exposure Time Estimates

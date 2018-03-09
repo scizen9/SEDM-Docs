@@ -19,16 +19,22 @@ designed to have:
 - 0.1 mag precision spectrophotometry.
 
 The hardware project was funded by the NSF with a grant to Caltech.  Many
-people were and are involved.  A partial list is here:
+people were involved.  Current members of the team are:
+
+- Michael Feeney (Instrument Master)
+- Richard Walters (Telescope/Instrument Operations and Scheduling)
+- Don Neill (Commissioning Scientist, IFU pipeline)
+- Nadejda Blagorodnova (Science results, RCam photometry pipeline)
+- Chris Cannella (Marshal interface, ATels)
+- Jamey Eriksen (Operations Support at Palomar)
+- Jeff Zolkower (Operations Support at Palomar)
+
+Former members, some of whom are still consulted for advice are:
 
 - Nick Konidaris (Principle Investigator)
 - Robert Quimby (Project Scientist)
 - Jack Davis, and Sagi Ben-Ami (Weizmann institute grad students)
-- Don Neill (Commissioning Scientist, IFU pipeline)
-- Nadejda Blagorodnova (Science results, RCam photometry pipeline)
-- Richard Walters (Telescope/Instrument Operations and Scheduling)
 - Karl Vyhmeister (SEDM Database)
-- Chris Cannella (Marshal interface, ATels)
 
 Here we document the instrument for observers and developers.  Observers
 will want to refer to the Observer's Reference below.

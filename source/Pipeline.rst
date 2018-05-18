@@ -38,13 +38,11 @@ be.
 
 Once the apertures have been placed, an ascii spectrum is automatically
 generated.  The format of the ascii spectrum is universal enough to be 
-input to any classifier (Superfit, e.g.), however, SNID is automatically 
-run on iPTF targets at the end of the reduction run when a final report 
-is generated.  For ZTF targets, the final report generation will upload
-the ascii spectra to the marshal.  **This phase currently in development.**
+input to any classifier (Superfit, e.g.), however, SNID is run on all
+targets at the end of the reduction run.  For ZTF targets, a script will
+upload the ascii spectra to the GROWTH marshal.
 
-**Note: the examples on this page are from the preceeding suvey, PTF.  It
-will be updated with ZTF targets once we are in full survey mode.**
+**Note: the examples on this page are from the preceeding suvey, iPTF.**
 
 Automated Pipeline Operations
 -----------------------------
@@ -77,19 +75,19 @@ status information can be gleaned from the output there.  The xterm set on
 the left may be used by the observer to examine the files on pharos.  A web
 browser will be set up on the desktop screen to the right which can be
 selected using the chooser on the lower right.  This is where you can
-interact with the marshal.
+interact with the marshal and the TNS web service to look at finder charts.
 
 Please be sure that the background subtraction has finished for the target
 you are reducing.  This is the most time-consuming step.  For each
 observation it will perform five iterations of traditional convolution,
 followed by an iteration of fast-Fourier convolution.  For the A/B pairs,
 it will do this twice.  Check the lower-right window to see if the
-background subtraction is in process.
+background subtraction is in progress.
 
-We record the name of the reducer in the spectrum file(see step 7 below).  This can be made
-easier if you set the environment variable SEDM_USER to your name in the
-top-right xterm window.  It will then come up as the default name when
-asked.
+We record the name of the reducer in the spectrum file(see step 7 below).
+This can be made easier if you set the environment variable SEDM_USER to
+your name in the top-right xterm window.  It will then come up as the
+default name when asked.
 
 In the top-right Xterm window, the observer interacts with the pipeline
 using the following steps:
@@ -97,18 +95,20 @@ using the following steps:
 1. cd into current (UT) date directory:
     * ``cd /scr2/sedmdrp/redux/20151115`` (e.g.)
 2. Confirm science targets:
-    * ``grep science Makefile``
+    * ``grep science Makefile`` or ``grep other Makefile``
     * A/B pairs will have target names like ``sp_PTF15drk.npy``
     * if the pair has not finished the target name will be something like ``sp_PTF15drk_obs1.npy``
     * do not process partial A/B pairs unless one has failed: the sky subtraction will be inferior
     * NOTE: if a target is bright, then only a single observation is made as the sky subtraction will not be as difficult.
 3. Initiate final reduction of science targets:
     * ``make science``  --> to make all science targets or
+    * ``make other``  --> to make all non-ZTF science targets or
     * ``make sp_PTF15drk.npy`` --> to make a specific target (e.g.)
-    * Note: targets that are already processed will not be re-done, so ``make science`` is a reasonable step after each pair has been read out.
+    * Note: targets that are already processed will not be re-done, so ``make science`` or ``make other`` is a reasonable step after each pair has been read out.
 4. Scale the data cube:
     * Use '>' and '<' keys to adjust the A/B cube scaling limits until good visibility is obtained.
     * Hit 'x' to use new scale or 'q' to abandon adjustments and revert to default scaling.
+    * If nothing is seen in the psuedo image, then hit 'n' to indicate no target is seen.
 
 .. figure:: PTF15drk_Scale.png
 
@@ -146,7 +146,7 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
     * 2 - acceptable   (minor problems, near neighbor, e.g.)
     * 3 - poor         (major problems, A or B image missing, e.g.)
     * 4 - no object visible
-    * NOTE: Only quality 1 and 2 will be uploaded to the marshal
+    * NOTE: Only quality 1 and 2 will be classified and uploaded to the marshal
     * After quality is entered, you will prompted to enter your name
 
 .. figure:: PTF15drk_SEDM.png
@@ -174,7 +174,13 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
 .. _linked here: http://www.astro.caltech.edu/sedm/redux/?C=N;O=D
 .. _found here: http://pharos.caltech.edu/data_access?
 
-12. When the night is complete, we use an automatic script to perform a default classification (using SNID).   This script will eventually upload the results to the appropriate ZTF marshal, once we have implemented this feature.  To initiate this script, please enter:
+12. When the night is complete, we use an automatic script to perform a default classification (using SNID) and update the report.txt file.   To initiate this script, please enter:
+     * ``make classify``
+
+13. After examining the results of the classification, we use a script to upload the results to the ZTF marshal and generate a report called ``report_ztf.txt``.  To initiate this script, please enter:
+     * ``make ztfupload``
+
+14. The last step is to generate the final report which sends an e-mail report out the to the SEDM team.  To initiate this final step, please enter:
      * ``make finalreport``
 
 Last updated on |version|

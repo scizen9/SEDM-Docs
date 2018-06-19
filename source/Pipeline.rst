@@ -116,6 +116,7 @@ using the following steps:
 
 5. Place aperture on A target:
     * confer with appropriate ZTF marshal cutout images and finder charts (`PTF marshal`__  in this example) for the `target object`__ (e.g.)
+    * another source for target placement is the finder charts in the finder directory: ``/scr2/sedm/phot/20151115/finders``, (e.g.)
     * find A object (positive: red)
     * place red aperture on target
     * adjust size with 'z' or 'x' keys
@@ -146,6 +147,8 @@ __ http://ptf.caltech.edu/cgi-bin/ptf/transient/view_source.cgi?name=15drk
     * 2 - acceptable   (minor problems, near neighbor, e.g.)
     * 3 - poor         (major problems, A or B image missing, e.g.)
     * 4 - no object visible
+    * 5 - bogus target
+    * Check the finder charts mentioned in step 5. above and if there is no target there, it is most likely a bogus target
     * NOTE: Only quality 1 and 2 will be classified and uploaded to the marshal
     * After quality is entered, you will prompted to enter your name
 

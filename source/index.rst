@@ -39,7 +39,7 @@ Former members, some of whom are still consulted for advice are:
 Here we document the instrument for observers and developers.  Observers
 will want to refer to the Observer's Reference below.
 
-Data products produced by the semi-automatic pipeline can be found `here`_.
+Data products produced by the automatic pipeline can be found `here`_.
 
 .. _here: http://www.astro.caltech.edu/sedm/redux/?C=N;O=D
 

@@ -25,6 +25,7 @@ people were involved.  Current members of the team are:
 - Richard Walters (Telescope/Instrument Operations and Scheduling)
 - Don Neill (Commissioning Scientist, IFU pipeline)
 - Nadejda Blagorodnova (Science results, RCam photometry pipeline)
+- Mickael Rigault (IFU pipeline lead developper, CNRS/IN2P3, France)
 - Chris Cannella (Marshal interface, ATels)
 - Jamey Eriksen (Operations Support at Palomar)
 - Jeff Zolkower (Operations Support at Palomar)

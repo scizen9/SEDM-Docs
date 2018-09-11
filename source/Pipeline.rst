@@ -20,7 +20,7 @@ __ http://skipper.caltech.edu:8080/cgi-bin/growth/marshal.cgi
 
 If there is a failure of the WCS solution, or if the target is particularly
 difficult to model with a PSF, there are ways to re-extract the spectrum.
-This will described in more detail below.
+This will be described in more detail below.
 
 Python Requirements
 ^^^^^^^^^^^^^^^^^^^
@@ -51,13 +51,27 @@ to complete.  In the afternoon when the UT date changes, the following
 steps are automatically performed:
 
 #. The appropriate reduced directory is created using the UT date:
-    * ``/scr2/sedmdrp/redux/20180823`` (e.g.)
+    * ``/scr2/sedmdrp/redux/20180907`` (e.g.)
 #. The required raw calibration files are linked into the directory as they are taken.
 #. Once all the bias files are acquired the master biases are generated.
 #. All subsequent calibration files are linked into the directory and then bias-subtracted and cosmic ray cleaned.
-#. Once all the calibration files are acquired a geometry solution is generated.
+#. Once all the calibration files are acquired a geometry solution and flat field is generated.
 #. If there is a failure in the geometry solution, geometry files from previous runs are linked in.
-#. The most recent fluxcal fits file is linked in.
+#. The most recent fluxcal fits file is linked in, usually from the previous night.
+
+You can verify the success of the geometry solution and flat field by looking
+at the plots generated when they are produced.  One is the wavelength solution
+dispersion and the other is the flat field.  They will be in the reduced
+directory and have names that start with the UT date string (20180907, e.g.).
+
+.. figure:: 20180907_wavesolution_dispersionmap.png
+
+    Figure 1. Wavelength solution dispersion in Angstroms (20180907_wavesolution_dispersionmap.png).
+
+.. figure:: 20180907_flat3d.png
+
+    Figure 2. Flat field (20180907_flat3d.png).
+
 
 Science Processing
 ^^^^^^^^^^^^^^^^^^
@@ -72,17 +86,17 @@ automatically performed:
 #. If the target is a standard star:
         a) no guider image is generated.
         b) the brightest spaxel is used to define the extraction region.
-        c) a new fluxcal fits file is generated.
+        c) PSF-forced spectro-photometry is performed.
+        d) a fluxcal fits file is generated.
 #. If the target is a science object:
-        a) a guider image is generated from all the guider frames.
-        b) the WCS is solved for the guider image
-        c) an extraction region in the IFU is based on the guider WCS and the target coordinates.
-        d) PSF-forced photometry is performed.
-        e) the nearest fluxcal file is used to calibrate the science target.
-        f) the telluric absorption is corrected.
-        g) the resulting spectrum is classified using SNID
-        h) the SNID results are put in the ascii spectrum header.
-        i) the extraction is recorded in a file called ``report.txt``
+        a) a guider image is generated from all the guider frames and the WCS is solved.
+        b) an extraction region in the IFU is based on the guider WCS and the target coordinates.
+        c) PSF-forced spectro-photometry is performed.
+        d) the most recent fluxcal file is used to calibrate the science target.
+        e) the telluric absorption is corrected based on header AIRMASS.
+        f) the resulting spectrum is classified using SNID
+        g) the SNID results are put in the ascii spectrum header.
+        h) the extraction is recorded in a file called ``report.txt``
 #. If the target is a ZTF object:
         a) the spectrum is uploaded to the growth marshal.
         b) the marshal URL is recorded in the file ``report_ztf.txt``
@@ -103,7 +117,7 @@ layout of the main desktop screen connected through the VNC connection.
 
 .. figure:: PharosSEDMdesktopNew.png
 
-    Figure 1. Pharos sedmdrp desktop on screen 7 (5907).
+    Figure 3. Pharos sedmdrp desktop on screen 7 (5907).
 
 The automatic pipeline script is running in the bottom right xterm window.  Some
 status information can be gleaned from the output there.  The xterm set on
@@ -127,31 +141,31 @@ of them using the ``display`` command from ImageMagick like this:
 
 ``display verify_*.png &``
 
-Figures 2 - 4 show the three types of verification plots.  For all three types,
+Figures 4 - 6 show the three types of verification plots.  For all three types,
 the acquisition finder chart is shown in the upper right and
 the IFU spaxel plot is in the upper left.  The PSF extraction results are shown
 in the lower left in three plots showing the Data, Model, and Residual.
 Finally, in the lower right, is shown some form of the extracted spectrum.  For
 a standard star, it will show the calibration check plot comparing the
-reference spectrum to the observed spectrum (see Figure 2).
+reference spectrum to the observed spectrum (see Figure 4).
 
 .. figure:: verify_forcepsf_auto_lstep1__crr_b_ifu20180907_03_03_14_STD-BD+33d2642.png
 
-    Figure 2. Verification plot for standard star BD+33d2642
+    Figure 4. Verification plot for standard star BD+33d2642
 
 For a science target that has a successful classification from SNID, it will
-show the SNID template match plot (see Figure 3).
+show the SNID template match plot (see Figure 5).
 
 .. figure:: verify_forcepsf_auto_lstep1__crr_b_ifu20180907_10_55_22_ZTF18abosrco.png
 
-    Figure 3. Verification plot for successfully typed science target ZTF18abosrco
+    Figure 5. Verification plot for successfully typed science target ZTF18abosrco
 
 For a science target for which SNID fails to find a classification, it will
-show only the extracted spectrum (see Figure 4).
+show only the extracted spectrum (see Figure 6).
 
 .. figure:: verify_forcepsf_auto_lstep1__crr_b_ifu20180907_11_38_04_ZTF18absqitc.png
 
-    Figure 4. Verification plot for unsuccessfuly typed science target ZTF18absqitc
+    Figure 6. Verification plot for unsuccessfuly typed science target ZTF18absqitc
 
 The first step of verification is to compare the B&W finder (upper right) with
 the IFU extraction region (upper left).  The red right-angle in the B&W finder
@@ -175,31 +189,33 @@ source of finder charts for the target.
 Adjustment
 ^^^^^^^^^^
 
-There are three types of adjustment that can be made.  The first two will
-completely replace the original spectrum, but will still need to be
-re-classified, re-reported on the slack channel (`pysedm-report`), and
-re-uploaded to the growth marshal (if the target is a ZTF object).  As of now,
-we are only documenting the first two in full.  The third adjustment creates
-new files and requires more bookkeeping and is therefore, not recommended
-unless specifically required.
+There are three types of adjustment that can be made.  The first two types,
+fixing the centroid and adjusting the extraction region, will
+completely replace the original spectrum.  The object adjusted in these two
+ways will still need to be re-classified, re-reported on the slack channel
+(`pysedm-report`), and re-uploaded to the growth marshal (if the target is a
+ZTF object).  The third type of adjustment, using an aperture instead of a psf,
+creates new files and requires more bookkeeping and is therefore, not
+recommended unless specifically required.
 
 
-Fix Centroid
-~~~~~~~~~~~~
+Adjust Centroid
+~~~~~~~~~~~~~~~
 
 This is the simplest adjustment to make.  It will arise in some cases if the WCS
 solution of the guider images failed.  This is indicated in the IFU spaxel plot
-by a red circle instead of a red X.  When the WCS solution fails, the
-extraction is defined by the brightest pixel.  This is fine for standard stars,
-but does not always work for science targets.  Sometimes even successful WCS
-solutions will define the centroid in the wrong place.  Let the finder chart in
-the verification plot and any other finders from the web be your guide.
+when the centroid  is indicated by a red circle instead of a red X.  When the
+WCS solution fails, the extraction is defined by the brightest pixel.  This is
+fine for standard stars, but does not always work for science targets.
+Sometimes even successful WCS solutions will define the centroid in the wrong
+place.  Let the finder chart in the verification plot and any other finders
+from the web be your guide.
 
 It is also possible that a target that is strongly influenced by a neighbor
 (host galaxy, nearby star) can be fixed by just moving the centroid, and hence
 moving the extraction region, off of the offending neighbor.
 
-To make this adjustment, you simply need to pass the fixed centroid to the
+To make this adjustment, you simply need to pass the new centroid to the
 `extract_star.py` program.  Use the IFU spaxel plot to determine the new
 centroid for the target.  Then enter the command:
 
@@ -212,7 +228,7 @@ replaced by the correct centroid values as determined from the IFU spaxel plot.
 Integer values are usually accurate enough for the new centroid.  Here is an
 example:
 
-``extract_star.py 20180907 --auto 10_11_12 --autobins 6 --centroid -3 7``.
+``extract_star.py 20180907 --auto 10_55_22 --autobins 6 --centroid 0 -5``.
 
 This will completely replace the spectrum file for the object and re-generate
 the plots.  You will want to display the new plots.  Find the appropriate
@@ -222,14 +238,22 @@ wanted.  You can also check the extracted spectrum in the same way.  Find the
 spectrum plot file (starts with ``spec_forcepsf_`` and ends with ``.png``) and
 display it.  As a final check, you can display the new IFU spaxel plot (starts
 with ``ifu_spaxels_`` and ends with ``.png``).  This plot will now have a black
-X where your adjusted centroid falls on the spaxels.
+cross where your adjusted centroid falls on the spaxels.
+
+.. figure:: ifu_spaxels_source_forcepsf_auto_lstep1__crr_b_ifu20180907_10_55_22_ZTF18abosrco.png
+
+    Figure 7. Adjusted centroid indicated by black cross.
 
 It is fine to tweak the centroid and re-extract the spectrum more than once.
 It's important to get a good extraction and this sometimes takes more than
 one adjustment to the centroid.
 
-Fix Extraction Region
-~~~~~~~~~~~~~~~~~~~~~
+*NOTE*: there is nothing in the verification plot for this object to indicate
+that it needs adjustment.  This was done just to demonstrate the procedure.
+
+
+Adjust Extraction Region
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is also a fairly easy adjustment to make.  If the extraction region
 includes a neighbor that strongly influences the psf model, and just moving
@@ -240,27 +264,43 @@ command:
 ``extract_star.py <UTdate> --auto <timestr> --autobins 6 --display``,
 
 which will bring up a display window showing the IFU spaxel plot with the
-current centroid indicated.  The left panel is the spectrum in the extraction
 region and the right is the spaxel map where you can re-draw the region.
 
-Just hold down the shift key and draw a region (by left clicking and dragging
+.. figure:: extract_star_with_display.png
+
+    Figure 8. ``extract_star.py`` with the ``--display`` parameter and a hand-drawn extraction region.
+
+Just hit the shift key and draw a region (by left clicking and dragging
 the mouse) around your target that does not include the offending neighbor.
 Once you release the left mouse button, the selected region will be shown on
-the plot.  If you want to try again, hit the <ESC> key, which will reset the
-region, and try again.  Once you are happy with the region, close the plot.
-This is done by using the menu at the upper left corner of the window and
-selecting `Close`.  The extraction will proceed once the window is closed.
+the plot (see Figure 8).  If you want to try again, hit the <ESC> key, which
+will reset the region, and try again.  Once you are happy with the region,
+close the plot.  This is done by using the menu at the upper left corner of
+the window and selecting `Close`.  The extraction will proceed once the window
+is closed.
 
-Here is an example for this command:
+Here is the command that produced Figure 8:
 
-``extract_star.py 20180907 --auto 10_11_12 --autobins 6 --display``.
+``extract_star.py 20180907 --auto 10_55_22 --autobins 6 --display``.
 
 As with fixing the centroid, the spectrum file and all the plots will be
 replaced.  Use the same method described above to verify that your new
 region achieved what you wanted.
 
-Fix Extraction Method
-~~~~~~~~~~~~~~~~~~~~~
+
+Fix A Cosmic Ray
+++++++++++++++++
+
+Using the ``--display`` parameter also allows you to find and avoid spaxels
+that are corrupted by a cosmic ray.  After the extract_star.py command is
+entered, you can click on individual spaxels until you see the one that is
+heavily influenced by the cosmic ray.  Then, hit the shift key and draw your
+extraction region so as to exclude the offending spaxel.  You may have to
+expand the window to more accurately draw the region.
+
+
+Adjust Extraction Method
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a more challenging adjustment to make.  As of now, the two previous
 adjustments seem to be able to fix nearly every situation.  If you need to

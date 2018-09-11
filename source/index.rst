@@ -21,14 +21,13 @@ designed to have:
 The hardware project was funded by the NSF with a grant to Caltech.  Many
 people were involved.  Current members of the team are:
 
-- Michael Feeney (Instrument Master)
-- Richard Walters (Telescope/Instrument Operations and Scheduling)
-- Don Neill (Commissioning Scientist, IFU pipeline)
-- Nadejda Blagorodnova (Science results, RCam photometry pipeline)
-- Mickael Rigault (IFU pipeline lead developper, CNRS/IN2P3, France)
-- Chris Cannella (Marshal interface, ATels)
-- Jamey Eriksen (Operations Support at Palomar)
-- Jeff Zolkower (Operations Support at Palomar)
+- Michael Feeney (Instrument Master, Caltech)
+- Richard Walters (Telescope/Instrument Operations and Scheduling, Caltech)
+- Don Neill (Commissioning Scientist, IFU pipeline automation, Caltech)
+- Nadejda Blagorodnova (Science results, RCam photometry pipeline, Caltech)
+- Mickael Rigault (IFU pipeline lead developer, CNRS/IN2P3, France)
+- Jamey Eriksen (Operations Support, Palomar)
+- Jeff Zolkower (Operations Support, Palomar)
 
 Former members, some of whom are still consulted for advice are:
 
@@ -36,6 +35,7 @@ Former members, some of whom are still consulted for advice are:
 - Robert Quimby (Project Scientist)
 - Jack Davis, and Sagi Ben-Ami (Weizmann institute grad students)
 - Karl Vyhmeister (SEDM Database)
+- Chris Cannella (Marshal interface, ATels)
 
 Here we document the instrument for observers and developers.  Observers
 will want to refer to the Observer's Reference below.

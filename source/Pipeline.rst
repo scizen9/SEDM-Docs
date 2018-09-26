@@ -9,7 +9,8 @@ A new pipeline developed by Mickael Rigault has been installed for
 automatic reduction of SEDM data.  The distribution is available on
 github__.  It generates a geometry solution from the calibration images and
 then automatically extracts target spectra based on the WCS solution of the
-guider images.  The extracted spectrum is classified using SNID__ and if it
+guider images.  Please see the documentation that accompanies the github
+repository.  The extracted spectrum is classified using SNID__ and if it
 is a ZTF target, the ascii spectrum is uploaded to the growth marshal__.
 The only interactive step is to generate a final report once all the
 extractions have been verified.

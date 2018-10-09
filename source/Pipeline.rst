@@ -106,6 +106,29 @@ The format of the ascii spectrum that is generated is universal enough to
 be input to any classifier (Superfit, e.g.).
 
 
+Quality
+^^^^^^^
+
+A quality value is assigned to each spectrum based on several criteria.  In
+this scheme, quality values 0, 1, and 2 are considered acceptable.  Any value
+above 2 indicates a major problem and the spectrum will neither be classified
+nor uploaded to the marshal.  Here is the current quality scheme:
+
+- Quality 0: default quality (usually what standard stars have)
+- Quality 1: extraction OK
+- Quality 2: a minor problem was encountered, but won't interfere with classification
+- Quality 3: the telescope offset placed the target outside the IFU
+- Quality 4: more than 20% of the flux is negative
+- Quality 5: the guide image astrometry failed (for science targets only)
+
+Standard star observations never generate guider image astrometry solutions
+and always use the brightest spaxel to define the centroid.  Therefore,
+standard stars should never have a quality of 5.
+
+Quality 3 objects cannot be fixed.  Quality 4 and 5 objects may possibly be
+fixed, but will require hand-extraction (see Adjustment below).
+
+
 Interactive Processing
 ----------------------
 
@@ -198,6 +221,10 @@ still need to be re-classified, re-reported on the slack channel
 ZTF object).  This is now done automagically with a script called `redex` that
 is available on pharos in the sedmdrp account.
 
+*NOTE*: if the target was given the quality value of 5 (guide image astrometry
+failed), then you must identify the target by hand and reset the centroid
+appropriately.
+
 The third type of adjustment, using an aperture instead of a psf, creates new
 files and requires more bookkeeping and is therefore, not recommended unless
 specifically required.
@@ -240,8 +267,8 @@ Adjust Centroid
 ~~~~~~~~~~~~~~~
 
 This is the simplest adjustment to make.  It will arise in some cases if the WCS
-solution of the guider images failed.  This is indicated in the IFU spaxel plot
-when the centroid  is indicated by a red circle instead of a red X.  When the
+solution of the guider images failed (Quality 5).  This is indicated in the IFU spaxel plot
+when the centroid is plotted a red circle instead of a red X.  When the
 WCS solution fails, the extraction is defined by the brightest pixel.  This is
 fine for standard stars, but does not always work for science targets.
 Sometimes even successful WCS solutions will define the centroid in the wrong
@@ -285,6 +312,9 @@ It's important to get a good extraction and this sometimes takes more than
 one adjustment to the centroid. If you think you might be doing this, please
 use the ``--noslack`` parameter until you have the correct centroid.
 
+*NOTE*: passing the centroid to the redex script will remove the quality 5
+condition.
+
 *NOTE*: there is nothing in the verification plot for this object to indicate
 that it needs adjustment.  This was done just to demonstrate the procedure.
 
@@ -311,11 +341,12 @@ Just hit the shift key and draw a region (by left clicking and dragging
 the mouse) around your target that does not include the offending neighbor.
 Once you release the left mouse button, the selected region will be shown on
 the plot (see Figure 8).  If you want to try again, hit the <ESC> key, which
-will reset the region, and try again. If you want to use a new centroid, just
-double-click on the location of the new centroid.  Once you are happy with the
-centroid and region, close the plot.  This is done by using the menu at the
-upper left corner of the window and selecting `Close`.  The extraction will
-proceed once the window is closed.
+will reset the region, and try again.  If you want to use a new centroid, just
+double-click on the location of the new centroid.  This will be required, if
+the target was assigned a quality of 5 (guider image astrometry failed).  Once
+you are happy with the centroid and region, close the plot.  This is done by
+using the menu at the upper left corner of the window and selecting `Close`.
+The extraction will proceed once the window is closed.
 
 If you want to abort the re-extraction, choose the `Destroy` option on the
 menu and it will halt the re-extraction.
@@ -327,6 +358,10 @@ Here is the command that produced Figure 8:
 As with fixing the centroid, the spectrum file and all the plots will be
 replaced.  Use the same method described above to verify that your new
 region achieved what you wanted.
+
+*NOTE*: if the target was assigned a quality of 5, you will have to
+double-click on the target to reset the centroid.  If you do not, the target
+will still have a quality of 5 and won't be classified or uploaded.
 
 
 Fix A Cosmic Ray

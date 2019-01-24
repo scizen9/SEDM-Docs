@@ -18,13 +18,20 @@ designed to have:
 - High "Slit to detector" photon throughput.
 - 0.1 mag precision spectrophotometry.
 
-The hardware project was funded by the NSF with a grant to Caltech.  Many
-people were involved.  Current members of the team are:
+The hardware project was funded by the NSF with a grant to Caltech.  If you use
+SEDM data please use the following text in your published papers:
+
+*This work made use of the Spectral Energy Distribution Machine funded via NSF grant 1106171.*
+
+Please also cite our paper on SEDM: `Blagoradnova, Neill, Walters, et al. 2018, PASP, v130, 035003 <https://ui.adsabs.harvard.edu/#abs/2018PASP..130c5003B/abstract>`_.
+
+Many people were involved.  Current members of the team are:
 
 - Michael Feeney (Instrument Master, Caltech)
 - Richard Walters (Telescope/Instrument Operations and Scheduling, Caltech)
 - Don Neill (Commissioning Scientist, IFU pipeline automation, Caltech)
 - Nadejda Blagorodnova (Science results, RCam photometry pipeline, Caltech)
+- Alison Dugas (SEDM database, photometry pipeline, Caltech)
 - Mickael Rigault (IFU pipeline lead developer, CNRS/IN2P3, France)
 - Jamey Eriksen (Operations Support, Palomar)
 - Jeff Zolkower (Operations Support, Palomar)

@@ -21,7 +21,7 @@ designed to have:
 The hardware project was funded by the NSF with a grant to Caltech.  If you use
 SEDM data please use the following text in your published papers:
 
-*This work made use of the Spectral Energy Distribution Machine funded via NSF grant 1106171.*
+*The SED Machine is based upon work supported by the National Science Foundation under Grant No. 1106171.*
 
 Please also cite our paper on SEDM: `Blagoradnova, Neill, Walters, et al. 2018, PASP, v130, 035003 <https://ui.adsabs.harvard.edu/#abs/2018PASP..130c5003B/abstract>`_.
 

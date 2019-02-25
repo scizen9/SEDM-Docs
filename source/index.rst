@@ -25,6 +25,8 @@ SEDM data please use the following text in your published papers:
 
 Please also cite our paper on SEDM: `Blagoradnova, Neill, Walters, et al. 2018, PASP, v130, 035003 <https://ui.adsabs.harvard.edu/#abs/2018PASP..130c5003B/abstract>`_.
 
+And if you use IFU data please cite: `Rigault, Neill, Walters, et al. 2019, arXiv, 1902.08526 <http://adsabs.harvard.edu/abs/2019arXiv190208526R>`_.
+
 Many people were involved.  Current members of the team are:
 
 - Michael Feeney (Instrument Master, Caltech)

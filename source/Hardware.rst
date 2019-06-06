@@ -74,7 +74,7 @@ This is also the CCD that exhibits the stripes mentioned in the timeline above.
 We installed a new CCD from Princeton on 2016/07/07 in the RC spot where it stayed
 until 2018/01/11.  This new CCD has the highest QE and was installed in the IFU
 position on 2018/05/08.  This figure shows the QE values from Princeton for each
-of the three CCD CCDs that were ordered, along with an E2V theorectical curve
+of the three CCDs that were ordered, along with an e2V theorectical curve
 and compares them with an Andor Ikon-936 with a BEX2-DD coating.
 
 .. figure:: SEDM_QE_CCDs.png
@@ -89,7 +89,7 @@ Optics
 Jenoptik Micro-Lens Array
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Problems with the :ref:`original MLA made by AMS <AMSMLA>` were detected when the spare MLA
-was examined under the microscope revealing a :ref:`mis-alignment between the
+was examined under a microscope revealing a :ref:`mis-alignment between the
 bi-convex faces of the MLA <fig-mla_offset>`.  A new design was originated by Jason Fucik that
 was plano-convex, thereby eliminating any alignment issues.  He contracted with
 Jenoptik to manufacture this new design with two pitches for the lenslets:
@@ -100,11 +100,11 @@ lowest scattering and was installed in SEDM on 2018/06/19.
 
     Figure 2. Jenoptik PN: 107578 installed in SEDM on 2018/06/19.
 
-* Jenoptik PN 107578 drawing:
+* Jenoptik PN 107578 (520 micron pitch) drawing:
 
 :download:`107578-01A-partdrawing.pdf`
 
-* Jenoptik PN 107597 drawing:
+* Jenoptik PN 107597 (606 micron pitch) drawing:
 
 :download:`107597-01A-partdrawing.pdf`
 
@@ -112,7 +112,9 @@ Performance
 """""""""""
 
 While the gross throughput only went up by 25%, the lower scattering provided a
-major improvement in performance on-sky.
+major improvement in performance on-sky.  *The combination of the lower
+scattering and the improved QE of the new IFU CCD has reduced our exposure times
+by 20%!*
 
 .. figure:: NewMLAPerformance_imgs.png
 

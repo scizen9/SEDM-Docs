@@ -1,4 +1,6 @@
 
+.. _sedm_pipeline:
+
 SEDM Pipeline
 =============
 

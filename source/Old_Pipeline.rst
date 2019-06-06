@@ -5,6 +5,10 @@ Kpy SEDM Pipeline
 Kpy Pipeline Overview
 ---------------------
 
+**Note:** This pipeline is no longer run on a regular basis.  This documentation
+is for posterity.  Please see the section :ref:`SEDM Pipeline <sedm_pipeline>`
+for the current pipeline documentation.
+
 Kpy Python Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^
 

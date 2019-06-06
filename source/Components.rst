@@ -1,7 +1,8 @@
 
+.. _original_components:
 
-Components
-==========
+Original Components
+===================
 
 Spec sheets, documentation, photos
 ----------------------------------
@@ -94,14 +95,16 @@ Lens as-built data
 
 :download:`SPECSHEETS/SEDM-O-RC2 SEDM-O-RC5.pdf`
 
+.. _AMSMLA:
+
 Lenslet array
 ^^^^^^^^^^^^^
 
-* Lenslet drawing request:
+* AMS Lenslet drawing request:
 
 :download:`SPECSHEETS/Lenslet Array J_v1.pdf`
 
-* Lenslet drawing from Aµs in Germany:
+* AMS Lenslet drawing from Aµs in Germany:
 
 :download:`SPECSHEETS/2APH-Q-P513-R1,820 (34,6x34,6x3).pdf`
 
@@ -134,6 +137,8 @@ Mechanical Data
 
 Copper water pump
 ^^^^^^^^^^^^^^^^^
+
+(Obsolete: we now use a chiller)
 
 We use a **copper** water recirculating system. **Note: Use a copper only system**, or you will destroy our expensive detectors! If you're not sure, don't use the pump.
 

@@ -65,6 +65,8 @@ listed here.  For the original components see the section :ref:`Original Compone
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2019/09/02 | 05313416   | 04001312   | P60 secondary removed for vacuum system overhaul and testing                            |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2019/09/07 | 05313416   | 04001312   | P60 secondary re-installed after friction reduction on radial defining points           |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.
 This table does not capture adjustments of optics or minor hardware changes.

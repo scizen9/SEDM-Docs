@@ -25,16 +25,16 @@ SEDM data please use the following text in your published papers:
 
 Please also cite our paper on SEDM: `Blagoradnova, Neill, Walters, et al. 2018, PASP, v130, 035003 <https://ui.adsabs.harvard.edu/#abs/2018PASP..130c5003B/abstract>`_.
 
-And if you use IFU data please cite: `Rigault, Neill, Walters, et al. 2019, arXiv, 1902.08526 <http://adsabs.harvard.edu/abs/2019arXiv190208526R>`_.
+And if you use IFU data please cite: `Rigault, Neill, Walters, et al. 2019, A&A, 627, A115 <https://ui.adsabs.harvard.edu/abs/2019A%26A...627A.115R/abstract>`_.
 
 Many people were involved.  Current members of the team are:
 
 - Michael Feeney (Instrument Master, Caltech)
 - Richard Walters (Telescope/Instrument Operations and Scheduling, Caltech)
 - Don Neill (Commissioning Scientist, IFU pipeline automation, Caltech)
-- Nadejda Blagorodnova (Science results, RCam photometry pipeline, Caltech)
-- Alison Dugas (SEDM database, photometry pipeline, Caltech)
 - Mickael Rigault (IFU pipeline lead developer, CNRS/IN2P3, France)
+- Reed Riddle (SEDM-KP software/operations)
+- Yashvi Sharma (Caltech grad student)
 - Jamey Eriksen (Operations Support, Palomar)
 - Jeff Zolkower (Operations Support, Palomar)
 
@@ -43,6 +43,8 @@ Former members, some of whom are still consulted for advice are:
 - Nick Konidaris (Principle Investigator)
 - Robert Quimby (Project Scientist)
 - Jack Davis, and Sagi Ben-Ami (Weizmann institute grad students)
+- Nadejda Blagorodnova (now at Radboud Univ.)
+- Alison Dugas (now at Univ. Hawaii)
 - Karl Vyhmeister (SEDM Database)
 - Chris Cannella (Marshal interface, ATels)
 

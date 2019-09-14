@@ -53,7 +53,7 @@ will want to refer to the Observer's Reference below.
 
 Data products produced by the automatic pipeline can be found `here`_.
 
-.. _here: http://www.astro.caltech.edu/sedm/redux/?C=N;O=D
+.. _here: http://pharos.caltech.edu/data_access/ifu
 
 
 

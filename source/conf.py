@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'SED Machine'
-copyright = u'2019, Nick Konidaris/Don Neill'
+copyright = u'2012-2019, Nick Konidaris/Don Neill'
 author = u'Nick Konidaris/Don Neill'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -61,7 +61,7 @@ author = u'Nick Konidaris/Don Neill'
 # built documents.
 #
 # The short X.Y version.
-version = '12 September 2019'
+version = '20 September 2019'
 # The full version, including alpha/beta/rc tags.
 release = version
 

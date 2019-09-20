@@ -7,7 +7,7 @@ Welcome to SED Machine's documentation!
 =======================================
 
 The SED Machine is very low resolution (:math:`\frac{\lambda}{\Delta
-\lambda}\sim100`) optical (365 - 1,000 nm) integral field (30"x"30")
+\lambda}\sim100`) optical (365 - 1,000 nm) integral field (28"x"28")
 spectrograph and a rainbow imager with a 13' x 13' field. The rainbow
 camera images are partitioned into u, g, r, and i bands, each with a 6' x
 6' field of view. The instrument was designed for rapid classification of
@@ -51,7 +51,8 @@ Former members, some of whom are still consulted for advice are:
 Here we document the instrument for observers and developers.  Observers
 will want to refer to the Observer's Reference below.
 
-Data products produced by the automatic pipeline can be found `here`_.
+Data products produced by the automatic pipeline can be found `here`_ (a
+login account is required).
 
 .. _here: http://pharos.caltech.edu/data_access/ifu
 
@@ -67,6 +68,7 @@ Contents:
     ObsRef
     Pipeline
     Efficiency
+    Timeline
     Hardware
     Components
     Old_Pipeline

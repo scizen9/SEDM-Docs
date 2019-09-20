@@ -84,15 +84,15 @@ twilight, science image acquisition begins.  The following steps are
 automatically performed:
 
 #. All new IFU images are linked in and bias-subtracted and cosmic ray cleaned.
-#. The sky lines are used to solve for the flexure offsets for the observation.
+#. The sky traces are used to solve for the flexure offsets for the observation.
 #. The geometry solution is used to generate a flexure-corrected cube for the observation.
 #. If the target is a standard star:
-        a) no guider image is generated.
+        a) an astrometry image is generated.
         b) the brightest spaxel is used to define the extraction region.
         c) PSF-forced spectro-photometry is performed.
         d) a fluxcal fits file is generated.
 #. If the target is a science object:
-        a) a guider image is generated from all the guider frames and the WCS is solved.
+        a) an astrometry image is generated from all the guider frames and the WCS is solved.
         b) an extraction region in the IFU is based on the guider WCS and the target coordinates.
         c) PSF-forced spectro-photometry is performed.
         d) the most recent fluxcal file is used to calibrate the science target.
@@ -379,6 +379,22 @@ that are corrupted by a cosmic ray.  After the `redex` command is entered
 the one that is heavily influenced by the cosmic ray.  Then, hit the shift key
 and draw your extraction region so as to exclude the offending spaxel.  You may
 have to expand the window to more accurately draw the region.
+
+
+Use Coarser Sampling
+~~~~~~~~~~~~~~~~~~~~
+
+The extract_star.py script called by the `redex` script samples the
+wavelengths in binned steps specified by the ``--lstep`` parameter.  The
+default value is one, but if the noise level is high, one may try a larger
+binning by specifying it on the `redex` command line.  For example:
+
+``redex 10_55_22 --lstep 2``
+
+will sample the wavelengths at twice the bin size as the default.  One has
+to exercise caution when doing this because narrow emission lines can be
+strongly impacted.
+
 
 
 Adjust Extraction Method

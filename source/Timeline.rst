@@ -64,9 +64,13 @@ Here we document the timeline of changes to SEDM.
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2019/09/02 | 05313416   | 04001312   | P60 secondary removed for vacuum system overhaul and testing                            |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
-    | 2019/09/07 | 05313416   | 04001312   | P60 secondary re-installed after friction reduction on radial defining points           |
+    | 2019/09/06 | 05313416   | 04001312   | P60 secondary re-installed after friction reduction on radial defining points           |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2019/09/13 | 05313416   | 04001312   | P60 secondary axial supports moved to retaining ring to minimize vacuum involvement     |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2019/09/16 | 05313416   | 04001312   | P60 primary washed (+12% refl.), RA coupling replaced                                   |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2019/09/18 | 05313416   | 04001312   | P60 secondary axial supports adjusted even closer to retaining ring                     |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.

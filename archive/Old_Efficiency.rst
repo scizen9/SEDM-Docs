@@ -1,6 +1,6 @@
 
-Efficiency
-==========
+Efficiency for KPY pipeline
+===========================
 
 It is important to calculate the efficiency of the final spectral
 extraction from the SEDM pipeline.  This is done by comparing the expected
@@ -61,11 +61,50 @@ atmospheric extinction using the standard extinction curves for Palomar
 (Hayes & Latham 1975).
 
 
+Wavelength Scale
+^^^^^^^^^^^^^^^^
+
+Previously we used a function :math:`(\lambda(x) = 1050(239/240)^x, x: 0 -
+265)` for the fiducial wavelength scale that roughly approximates the run
+of wavelengths for SEDM.  However, it is important for this calculation
+that the wavelength scale be as close to the native scale as possible.
+Therefore, we switched to using an average scale derived from spaxels in
+the central five arcseconds of the IFU.  This changed the shape of the
+efficiency curve and made it more accurate.
+
+
+.. _fig-waves:
+
+.. figure:: Waves.png
+
+    SEDM old and new fiducial wavelength scales.
+
+
 Wavelength Bins
 ^^^^^^^^^^^^^^^
-The new pysedm pipeline uses a linearized wavelength scale.  Thus, our observed
-flux is :math:`F_{ph,obs} = e^-\ s^{-1}\ \Delta\lambda(\lambda)^{-1}`, where
-:math:`\Delta\lambda(\lambda)` is given by the size of the wavelength bins.
+
+Next we must calculate the size of the wavelength bins, given as
+:math:`\Delta\lambda(\lambda)`.  Most spectrographs have a native
+wavelength bin size that is approximately constant, which is another way of
+saying the dispersion is fairly constant.  Since the SEDM was designed not
+to have a constant dispersion, but to have a constant resolution of
+:math:`R = \lambda/\Delta\lambda \approx 100`, the dispersion varies
+substantially over the wavelength range.  Thus, our wavelength bins are a
+function of wavelength, as shown below.
+
+.. _fig-delta_waves:
+
+.. figure:: Delta_Waves.png
+
+    SEDM old and new wavelength bins.
+
+
+The difference between the average and the function-generated wavelength
+scales becomes more pronounced when you use them to calculate the
+wavelength bins.  This was the main reason we chose to use an average
+wavelength scale rather than a functional form.  Thus, our observed flux is
+:math:`F_{ph,obs} = e^-\ s^{-1}\ \Delta\lambda(\lambda)^{-1}`, where
+:math:`\Delta\lambda(\lambda)` is given by the average wavelength bins.
 
 
 Effective Area
@@ -110,9 +149,72 @@ limits on the true efficiency.
 
 .. _fig-efficiency:
 
-.. figure:: TypicalEff_new.png
+.. figure:: TypicalEff.png
 
-    Typical SEDM efficiency curve from 2020 Jan. 01 using BD+25d4655.
+    Typical SEDM efficiency curve from 2017 Sep. 20 using BD+28d4211.
+
+
+Importance of Wavelength Bins
+-----------------------------
+
+To visualize how the efficiency is calculated, we can think of the
+instrument as having buckets to collect photons that correspond to the CCD
+pixels.  The dispersive elements of the instrument define what the
+wavelength 'size' of each bucket is, while the spatial 'size' of each
+bucket is determined by the optical properties of the entire system
+(telescope + instrument).  The efficiency is simply the number of photons
+we actually collected in our bucket divided by the number of photons we
+expect a given bucket to collect.  The number of photons we expect to
+collect is obviously a strong function of the size of the bucket; the
+bigger the bucket the more photons we expect to collect.  If we assume our
+buckets are smaller than they really are, our expectations are
+correspondingly low and we get a higher efficiency.  The plot below shows
+the result of our initial efficiency calculation, assuming that all of our
+buckets are 1 nm in wavelength.  
+
+
+.. _fig-eff_nodw:
+
+.. figure:: NoDeltaWaveEff.png
+
+    SEDM efficiency assuming our wavelength bins are all 1 nm in size
+    (wrong!).
+
+
+The shape of this curve shows a strong blue linear trend, which is contrary
+to the expected curve based on the optical design, ray-traced in ZMAX (see
+:ref:`gray curve in figure six below <fig-lab_eff>`).  Once we discovered
+that we were not accounting for the wavelength bin size, we re-calculated
+the efficiency and since our wavelength bins were not 1 nm, but instead
+ranged from approximately 1.5 to 4.5 nm (:ref:`green curve in figure two
+<fig-delta_waves>`), the overall efficiency dropped considerably.  The
+shape seems to be closer to what is :ref:`expected based on ray-tracing
+<fig-lab_eff>`.  However, here we are still using the functional form for our
+fiducial wavelengths.  The plot below shows how the overall efficiency
+dropped significantly, but because the wavelength bins now vary in size
+much closer to the native bin sizes, the shape changed to a more expected
+form.
+
+
+.. _fig-eff_oldfid:
+
+.. figure:: OldFidWaveEff.png
+
+    SEDM efficiency accounting for wavelength bins, but using the old
+    fiducial wavelengths (better, but still wrong!).
+
+
+If we examine the native wavelength solution we find that, in fact, the
+wavelength bins range from 1.5 to 5.7 nm (:ref:`blue curve in figure two
+<fig-delta_waves>`) and have a trend that differs from that generated using
+the functional form.  Compare the figure above with the :ref:`first
+efficiency curve <fig-efficiency>` and you will see that at 500 nm, the
+efficiency increases by 0.5%, but the peak efficiency goes down.  If you
+compare the green and blue curves in :ref:`figure two above
+<fig-delta_waves>`, you can see that the largest differences occur around
+pixel zero and pixel 200.  Referring to :ref:`figure one above
+<fig-waves>`, it is apparent that this changes the shape of the curve
+primarily at the red and blue 'shoulders'.
 
 
 Ray Tracing and Lab Measurements
@@ -134,10 +236,12 @@ that we can compare with our on-sky measurements.
     and the throughput of the instrument without the lenslet array (green).
 
 
-The yellow curve was derived using the KPY pipeline using incorrect wavelenth
-bins and is superceded by :ref:`figure one <fig-efficiency>`. We point out
-that the gray curve is calculated for a single spaxel ray and does not account
-for losses due to the lenslet filling factor or dead zones between lenses.  It
+The yellow curve was derived the same way that :ref:`figure four
+<fig-eff_nodw>` was calculated.  Our best calculation shown in :ref:`figure
+three <fig-efficiency>` has a shape closer to the gray curve, but with a
+lower peak throughput by a factor of more than six.  We point out that the
+gray curve is calculated for a single spaxel ray and does not account for
+losses due to the lenslet filling factor or dead zones between lenses.  It
 is puzzling that our initial (and incorrect) calculation agrees so well
 with the lab throughput measurements shown by the red and blue curves.  It
 is possible that there is still some accounting for wavelength bins in the
@@ -147,7 +251,7 @@ lab measurements that needs to be done.
 The Effect of Filling Factor on Efficiency
 ------------------------------------------
 
-In our efforts to understand the throughput of the current SEDM, we
+In our efforts to understand the low throughput of the current SEDM, we
 have tried to estimate the filling factor of the multi-lens array (MLA).
 In the manufacturing process for any MLA, a certain fraction of the array
 becomes unusable because of dead zones at the borders of the lenslets.  In
@@ -197,18 +301,18 @@ The impact of filling factor is also illustrated by the :ref:`figure below
     figure legend.
 
 
-The Effect of CCD QE on Efficiency
-----------------------------------
+Good News
+^^^^^^^^^
 
-We also discovered that the original IFU CCD has a 30% lower QE than the
-more modern CCDs.
-
-.. _fig_SEDM_QE_CCDs:
-
-.. figure:: SEDM_QE_CCDs.png
-
-    The original IFU CCD was apparently an engineering grade CCD.  It is
-    now only used as an emergency spare.
+Ultimately, this is good news for the prospect of improving the SEDM
+throughput.  In particular, we can avoid the whole issue of alignment by
+making the MLA plano-convex instead of double convex.  This should result
+in a filling factor much closer to 100% and thus our throughput should jump
+by nearly a factor of seven.  We have indeed redesigned the MLA to be
+plano-convex and are working with a vendor with the goal of producing a MLA
+with a filling factor of 98% (light blue curve in :ref:`the figure above
+<fig-filling_factor>`) as a replacement MLA for SEDM (and for any future
+versions of the SEDM).
 
 
 Efficiency Trend
@@ -224,14 +328,27 @@ data with the average fiducial wavelength scale.
 
 .. _fig-eff_trend:
 
-.. figure:: SEDM_eff_trend_pysedm.png
+.. figure:: SEDM_eff_trend.png
 
-    SEDM efficiency in 100 nm bins from 400 to 900 nm for SEDM data that have
-    been reduced using pysedm.
+    SEDM efficiency in 100 nm bins from 400 to 900 nm over the active
+    period of SEDM observations.
 
-One feature of this plot stands out.  There are short periods of higher
+Several features of this plot stand out.  There are short periods of higher
 efficiency that go against the general trend.  These are most likely from
 observations of standard stars that have a high background due to
 moonlight.
+
+The other feature is the increase in efficiency to a peak near JD 2457640
+and then a general decline.  It's hard to understand the rise in this
+trend, while the decline is expected as the mirror coatings deteriorate.
+There was a lot of experimentation with the instrument configuration during
+the early days, although this would better explain jumps in efficiency and
+not a slow general trend.
+
+We also see that the current efficiency is slightly lower than the peak
+from the previous group.  If somehow the trend that was seen in the
+previous 300 days hold for the next 300, then we should increase to a
+similar if not higher peak.
+
 
 Last updated on |version|

@@ -25,6 +25,14 @@ If there is a failure of the WCS solution, or if the target is particularly
 difficult to model with a PSF, there are ways to re-extract the spectrum.
 This will be described in more detail below.
 
+In addition to an automatic circular extraction region, we have also implemented
+using contours from PS1 images to define the extaction region.  These are
+referred to as `contsep` extractions for contour separation.  These are done in
+parallel to the circular (`robot`) extractions, but are currently not
+automatically uploaded to the growth marshal.  In cases where `contsep`
+extractions give an improvement over the `robot` extractions, they can be
+uploaded manually (see below).
+
 Python Requirements
 ^^^^^^^^^^^^^^^^^^^
 
@@ -94,14 +102,15 @@ automatically performed:
 #. If the target is a science object:
         a) an astrometry image is generated from all the guider frames and the WCS is solved.
         b) an extraction region in the IFU is based on the guider WCS and the target coordinates.
-        c) PSF-forced spectro-photometry is performed.
-        d) the most recent fluxcal file is used to calibrate the science target.
-        e) the telluric absorption is corrected based on header AIRMASS.
-        f) the resulting spectrum is classified using SNID
-        g) the SNID results are put in the ascii spectrum header.
-        h) the extraction is recorded in a file called ``report.txt``
+        c) a separate extraction using the `contsep` method is created.
+        d) PSF-forced spectro-photometry is performed.
+        e) the most recent fluxcal file is used to calibrate the science target.
+        f) the telluric absorption is corrected based on header AIRMASS.
+        g) the resulting spectra are classified using SNID
+        h) the SNID results are put in the ascii and fits spectrum headers.
+        i) the extractions are recorded in a file called ``report.txt``
 #. If the target is a ZTF object:
-        a) the spectrum is uploaded to the growth marshal.
+        a) the `robot` spectrum is uploaded to the growth marshal.
         b) the marshal URL is recorded in the file ``report_ztf.txt``
 
 The format of the ascii spectrum that is generated is universal enough to
@@ -164,7 +173,7 @@ The automated pipeline generates verification plots as each image is processed.
 These are PNG image files that start with ``verify_``.  You can display all
 of them using the ``display`` command from ImageMagick like this:
 
-``display verify_*.png &``
+``display verify_auto_robot_*.png &``
 
 Figures 4 - 6 show the three types of verification plots.  For all three types,
 the acquisition finder chart is shown in the upper right and
@@ -192,6 +201,15 @@ show only the extracted spectrum (see Figure 6).
 
     Figure 6. Verification plot for unsuccessfuly typed science target ZTF18absqitc
 
+Now that we are also using `contsep` for extractions, you will want to display
+those verification images separately as follows.
+
+``display verify_auto_contsep_*.png &``
+
+These look the same as the previously described verification images, except
+for the `contsep` in the file names and the contours used for extraction
+will sometimes look different.
+
 The first step of verification is to compare the B&W finder (upper right) with
 the IFU extraction region (upper left).  The red right-angle in the B&W finder
 indicates the location of the target.  If the IFU extraction region indicated by
@@ -210,6 +228,29 @@ mouse the the right edge of the desktop).  There you can open a web browser, if
 needed, and log into the ZTF marshal, the TNS website, or any other web-based
 source of finder charts for the target.
 
+Compare Extractions
+^^^^^^^^^^^^^^^^^^^
+
+You will want to also compare the `robot` and `contsep` extractions to see if
+the `contsep` extraction provides an improvement in host subtraction over the
+`robot` extraction.  Check the spaxels used to define the extraction region.
+If the `contsep` spaxels (indicated with the black dots) do a good job of
+excluding host spaxels, then you will want to upload the contsep spectrum to
+the marshal.  In many cases, the extractions of the `robot` and `contsep`
+methods are the same, especially if either the target is right on top of the
+host nucleus, or if the target is well separated from the host.  In these
+cases, you don't need to do anything.  In the case where the `contsep` is
+clearly better than the `robot` extraction, then upload the `contsep` spectrum
+to the marshal.  Please follow this example, substituting the correct `contsep`
+spectrum file.
+
+``growth spec_auto_contsep_lstep1__crr_b_ifu20200710_04_14_53_ZTF20abjnmhn.txt``
+
+This command will upload the `contsep` extracted spectrum to the marshal.
+
+If the `contsep` extraction is no better than the `robot` extraction and you
+still feel the `robot` extraction can be improved, follow the instructions
+in the next section.
 
 Adjustment
 ^^^^^^^^^^
@@ -415,6 +456,11 @@ final step, please enter:
 ``make report``
 
 ``make finalreport``
+
+This last command will now prompt you for a comment about the night.  Refer to
+the seeing monitor or the night statistics page on the pharos website and
+briefly record the quality of the seeing and conditions for the night in your
+comment.
 
 It is a good idea to check this e-mail (if you are on the list) and make sure
 all of the links work and that the correct extractions are displayed.

@@ -78,6 +78,8 @@ Here we document the timeline of changes to SEDM.
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2019/09/18 | 05313416   | 04001312   | P60 secondary axial supports adjusted even closer to retaining ring                     |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/07/10 | 05313416   | 2803120001 | Put :ref:`original IFU CCD <PPCCD>` in RC spot due to loose USB port, using spare fibre |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.
 This table does not capture adjustments of optics or minor hardware changes.

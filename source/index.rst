@@ -29,14 +29,13 @@ And if you use IFU data please cite: `Rigault, Neill, Walters, et al. 2019, A&A,
 
 Many people were involved.  Current members of the team are:
 
-- Michael Feeney (Instrument Master, Caltech)
 - Richard Walters (Telescope/Instrument Operations and Scheduling, Caltech)
 - Don Neill (Commissioning Scientist, IFU pipeline automation, Caltech)
 - Mickael Rigault (IFU pipeline lead developer, CNRS/IN2P3, France)
 - Reed Riddle (SEDM-KP software/operations)
 - Yashvi Sharma (Caltech grad student)
-- Jamey Eriksen (Operations Support, Palomar)
 - Jeff Zolkower (Operations Support, Palomar)
+- Nick Ganciu (Operations Support, Palomar)
 
 Former members, some of whom are still consulted for advice are:
 
@@ -47,6 +46,8 @@ Former members, some of whom are still consulted for advice are:
 - Alison Dugas (now at Univ. Hawaii)
 - Karl Vyhmeister (SEDM Database)
 - Chris Cannella (Marshal interface, ATels)
+- Michael Feeney (Instrument Master, now at Amazon)
+- Jamey Eriksen (Operations Support, now in Arizona)
 
 Here we document the instrument for observers and developers.  Observers
 will want to refer to the Observer's Reference below.

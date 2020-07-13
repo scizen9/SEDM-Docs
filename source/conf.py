@@ -61,7 +61,7 @@ author = u'Nick Konidaris/Don Neill'
 # built documents.
 #
 # The short X.Y version.
-version = '21 January 2020'
+version = '13 July 2020'
 # The full version, including alpha/beta/rc tags.
 release = version
 

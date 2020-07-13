@@ -32,6 +32,8 @@ Many people were involved.  Current members of the team are:
 - Richard Walters (Telescope/Instrument Operations and Scheduling, Caltech)
 - Don Neill (Commissioning Scientist, IFU pipeline automation, Caltech)
 - Mickael Rigault (IFU pipeline lead developer, CNRS/IN2P3, France)
+- Young-Lo Kim (IFU pipeline, contsep developer, CNRS/IN2P3, France)
+- Jeremy Lezmy (IFU pipeline, host modeling, CNRS/IN2P3, France)
 - Reed Riddle (SEDM-KP software/operations)
 - Yashvi Sharma (Caltech grad student)
 - Jeff Zolkower (Operations Support, Palomar)

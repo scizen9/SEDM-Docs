@@ -54,6 +54,23 @@ operations.  We start with the pre-science processing that generates the
 nightly geometry solution and then continue with the science target
 processing.
 
+The pipeline should be running continuously, but if pharos goes down, or if
+you need to restart the pipeline first cd to ``~/redux`` and then use the
+command:
+
+``~/spy ~/sedmpy/drpifu/AutoReduce.py --wait |& tee -a run.log``
+
+The ``--wait`` option is used when you re-start the pipeline before any new
+data are taken.  If you need to re-start the pipeline after observations have
+begun, then leave out the ``--wait`` option.  There are two aliases that
+perform these functions:
+
+``autored``
+
+and
+
+``autored_wait``
+
 Pre-Science Processing
 ^^^^^^^^^^^^^^^^^^^^^^
 

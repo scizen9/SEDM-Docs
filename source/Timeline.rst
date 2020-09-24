@@ -82,8 +82,8 @@ Here we document the timeline of changes to SEDM.
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2020/07/15 | 05313416   | 2803120001 | Instrument control computer mounted on telescope                                        |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
-    | 2020/08/28 | 05313416   | 04001312   | Put :ref:`original RC CCD <PPCCD>` back in RC spot with tape holding USB cable in place,|
-    |            |            |            | after finding condensation on outside of RC window, disabled dry air system             |
+    | 2020/08/28 | 05313416   | 2803120001 | Kept :ref:`original IFU CCD <PPCCD>` in RC spot, after finding condensation on outside  |
+    |            |            |            | of RC window, disabled dry air system                                                   |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.

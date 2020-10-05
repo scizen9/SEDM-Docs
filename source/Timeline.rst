@@ -7,7 +7,7 @@ Here we document the timeline of changes to SEDM.
 .. table:: Table 1. SEDM Hardware Timeline
 
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
-    | Date       | IFU CCD    | RC CCD     | Description                                                                             |
+    | Date (UT)  | IFU CCD    | RC CCD     | Description                                                                             |
     +============+============+============+=========================================================================================+
     | 2013/03/12 | 2803120001 | 04001312   | Earliest data set in /scr2/npk/raw on pharos                                            |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
@@ -84,6 +84,13 @@ Here we document the timeline of changes to SEDM.
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2020/08/28 | 05313416   | 2803120001 | Kept :ref:`original IFU CCD <PPCCD>` in RC spot, after finding condensation on outside  |
     |            |            |            | of RC window, disabled dry air system                                                   |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/01 | 05313416   | 2803120001 | Telescope down for two nights to repair secondary vacuum system and replace RC camera   |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/03 | 05313416   | 04001312   | Returned to operations with :ref:`original RC CCD <PPCCD>` in RC spot, however serial   |
+    |            |            |            | number still shows old IFU CCD number 2803120001                                        |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/05 | 05313416   | 04001312   | Adjusted RC alignment and updated RC-IFU offset in pipeline (RC serial still wrong)     |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.

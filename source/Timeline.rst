@@ -88,9 +88,13 @@ Here we document the timeline of changes to SEDM.
     | 2020/10/01 | 05313416   | 2803120001 | Telescope down for two nights to repair secondary vacuum system and replace RC camera   |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2020/10/03 | 05313416   | 04001312   | Returned to operations with :ref:`original RC CCD <PPCCD>` in RC spot, however serial   |
-    |            |            |            | number still shows old IFU CCD number 2803120001                                        |
+    |            |            |            | number still shows old IFU CCD number 2803120001 and AtoD threshold too high            |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2020/10/05 | 05313416   | 04001312   | Adjusted RC alignment and updated RC-IFU offset in pipeline (RC serial still wrong)     |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/06 | 05313416   | 04001312   | RC serial number fixed, now correct                                                     |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/09 | 05313416   | 04001312   | RC AtoD threshold adjusted so low-background values do not get set to zero              |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.

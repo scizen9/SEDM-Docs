@@ -96,6 +96,8 @@ Here we document the timeline of changes to SEDM.
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
     | 2020/10/09 | 05313416   | 04001312   | RC AtoD threshold adjusted so low-background values do not get set to zero              |
     +------------+------------+------------+-----------------------------------------------------------------------------------------+
+    | 2020/10/29 | 05313416   | 04001312   | Re-installed repaired Dry Air system and discovered there is no flow control            |
+    +------------+------------+------------+-----------------------------------------------------------------------------------------+
 
 Table 1 shows the dates when major changes to the instrument hardware were made.
 This table does not capture adjustments of optics or minor hardware changes.
